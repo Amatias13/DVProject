@@ -63,8 +63,8 @@ public class SimpleSampleCharacterControl : MonoBehaviour
 
     private void MyInput()
     {
-        horizontalInput = Input.GetAxisRaw("Horizontal");
-        verticalInput = Input.GetAxisRaw("Vertical");
+        horizontalInput = Input.GetAxis("Horizontal");
+        verticalInput = Input.GetAxis("Vertical");
 
         // when to jump
         if (Input.GetKey(jumpKey) && readyToJump && grounded)

@@ -56,7 +56,7 @@ public class Movement : MonoBehaviour
             }
         }
         controller.Move(new Vector3(0,0,0));
-
+        animator.SetFloat("MoveSpeed", 0);
 
     }
 

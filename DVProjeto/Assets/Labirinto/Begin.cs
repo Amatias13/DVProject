@@ -13,6 +13,8 @@ public class Begin : MonoBehaviour
     private Movement movement;
     private Slider slider;
     private TextMeshProUGUI time;
+    private AudioSource audioSource;
+    private AudioClip audioClip;
     private bool asStart;
 
     void Start()
@@ -20,6 +22,9 @@ public class Begin : MonoBehaviour
         movement = FindObjectOfType<Movement>();
         time = timeObject.GetComponent<TextMeshProUGUI>();
         slider = healthBarObject.GetComponent<Slider>();
+        audioSource = GetComponent<AudioSource>();
+        audioClip = audioSource.clip;
+
         time.text = "" + timeLeft;
         asStart = false;
     }
@@ -48,6 +53,7 @@ public class Begin : MonoBehaviour
         dieObject.SetActive(true);
         backButton.SetActive(true);
         slider.value = 0;
+        audioSource.PlayOneShot(audioClip);
     }
 
     void OnTriggerEnter(Collider other)

@@ -31,7 +31,7 @@ public class Begin : MonoBehaviour
             timeLeft -= Time.deltaTime;
             time.text = "" + Mathf.Floor(timeLeft * 100) / 100f; ;
         }
-        if(timeLeft < 0)
+        if(slider.value == 0 || timeLeft < 0)
         {
             Dead();
 
@@ -42,6 +42,8 @@ public class Begin : MonoBehaviour
 
     void Dead()
     {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         movement.Kill();
         dieObject.SetActive(true);
         backButton.SetActive(true);

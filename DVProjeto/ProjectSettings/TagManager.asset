@@ -6,6 +6,15 @@ TagManager:
   tags:
   - Begin
   - Exit
+  - DieMessage
+  - Back
+  - HealthBar
+  - WinWater
+  - WinPower
+  - WinDiamonds
+  - WinWood
+  - WinFood
+  - MessagesObject
   layers:
   - Default
   - TransparentFX

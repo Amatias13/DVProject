@@ -3873,7 +3873,7 @@ GameObject:
   - component: {fileID: 281997140}
   m_Layer: 5
   m_Name: WinPower
-  m_TagString: Untagged
+  m_TagString: WinPower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4959,8 +4959,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 182.20001, y: -54}
-  m_SizeDelta: {x: 70.275024, y: 31.051025}
+  m_AnchoredPosition: {x: 247.05432, y: -77}
+  m_SizeDelta: {x: 153.0237, y: 48.934}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &335564928
 MonoBehaviour:
@@ -4982,7 +4982,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 10s
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -5009,8 +5009,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 25
-  m_fontSizeBase: 25
+  m_fontSize: 45
+  m_fontSizeBase: 45
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -9667,6 +9667,7 @@ GameObject:
   - component: {fileID: 694406903}
   - component: {fileID: 694406902}
   - component: {fileID: 694406901}
+  - component: {fileID: 694406904}
   m_Layer: 0
   m_Name: MenuController
   m_TagString: Untagged
@@ -9804,6 +9805,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &694406904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 694406900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0feb081cfdd80bf478806df35f558b1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameIsPaused: 0
+  pauseMenuUI: {fileID: 1175377794}
 --- !u!1 &696578796
 GameObject:
   m_ObjectHideFlags: 0
@@ -9814,8 +9829,8 @@ GameObject:
   m_Component:
   - component: {fileID: 696578797}
   m_Layer: 5
-  m_Name: WinDiamonts
-  m_TagString: Untagged
+  m_Name: WinDiamonds
+  m_TagString: WinDiamonds
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9834,7 +9849,7 @@ RectTransform:
   - {fileID: 777311492}
   - {fileID: 666315196}
   m_Father: {fileID: 744750571}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -10483,7 +10498,7 @@ GameObject:
   - component: {fileID: 744750571}
   m_Layer: 5
   m_Name: WinResourcesMessages
-  m_TagString: Untagged
+  m_TagString: MessagesObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10501,9 +10516,9 @@ RectTransform:
   m_Children:
   - {fileID: 1961281579}
   - {fileID: 281997140}
-  - {fileID: 696578797}
   - {fileID: 775394490}
   - {fileID: 1814444777}
+  - {fileID: 696578797}
   m_Father: {fileID: 1103563135}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10962,7 +10977,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 100
   m_WholeNumbers: 0
-  m_Value: 35.2
+  m_Value: 100
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -10977,7 +10992,7 @@ GameObject:
   - component: {fileID: 775394490}
   m_Layer: 5
   m_Name: WinWood
-  m_TagString: Untagged
+  m_TagString: WinWood
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10996,7 +11011,7 @@ RectTransform:
   - {fileID: 131438766}
   - {fileID: 971156020}
   m_Father: {fileID: 744750571}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -13675,7 +13690,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeObject: {fileID: 335564926}
-  timeLeft: 5
+  dieObject: {fileID: 1598089676}
+  backButton: {fileID: 1893141157}
+  healthBarObject: {fileID: 766688618}
+  timeLeft: 60
 --- !u!1 &1027091120
 GameObject:
   m_ObjectHideFlags: 0
@@ -16018,7 +16036,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1175377799}
   - component: {fileID: 1175377798}
-  - component: {fileID: 1175377797}
   - component: {fileID: 1175377796}
   - component: {fileID: 1175377795}
   m_Layer: 5
@@ -16068,19 +16085,6 @@ MonoBehaviour:
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
   m_PresetInfoIsWorld: 0
---- !u!114 &1175377797
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1175377794}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0feb081cfdd80bf478806df35f558b1a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pauseMenuUI: {fileID: 1978388899}
 --- !u!223 &1175377798
 Canvas:
   m_ObjectHideFlags: 0
@@ -18435,8 +18439,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 76.70001, y: -54}
-  m_SizeDelta: {x: 96.79498, y: 30.023987}
+  m_AnchoredPosition: {x: 85, y: -74}
+  m_SizeDelta: {x: 129.2259, y: 47.8821}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1359624060
 MonoBehaviour:
@@ -18458,7 +18462,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Tempo:'
+  m_text: 'Time:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -18485,8 +18489,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 25
-  m_fontSizeBase: 25
+  m_fontSize: 45
+  m_fontSizeBase: 45
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -20420,8 +20424,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 115.48932, y: -53.99707}
-  m_SizeDelta: {x: 230.979, y: 107.974}
+  m_AnchoredPosition: {x: 172.26355, y: -74.576416}
+  m_SizeDelta: {x: 344.5274, y: 149.1326}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1528186885
 MonoBehaviour:
@@ -21036,11 +21040,11 @@ GameObject:
   - component: {fileID: 1598089678}
   m_Layer: 5
   m_Name: DieMessage
-  m_TagString: Untagged
+  m_TagString: DieMessage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1598089677
 RectTransform:
   m_ObjectHideFlags: 0
@@ -21080,7 +21084,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: YOU DIE
+  m_text: YOU DIED
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -24851,7 +24855,7 @@ GameObject:
   - component: {fileID: 1814444777}
   m_Layer: 5
   m_Name: WinFood
-  m_TagString: Untagged
+  m_TagString: WinFood
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -24870,7 +24874,7 @@ RectTransform:
   - {fileID: 1694546749}
   - {fileID: 269062321}
   m_Father: {fileID: 744750571}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -26223,11 +26227,11 @@ GameObject:
   - component: {fileID: 1893141159}
   m_Layer: 5
   m_Name: BuildButton
-  m_TagString: Untagged
+  m_TagString: Back
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1893141158
 RectTransform:
   m_ObjectHideFlags: 0
@@ -27323,7 +27327,7 @@ GameObject:
   - component: {fileID: 1961281579}
   m_Layer: 5
   m_Name: WinWater
-  m_TagString: Untagged
+  m_TagString: WinWater
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

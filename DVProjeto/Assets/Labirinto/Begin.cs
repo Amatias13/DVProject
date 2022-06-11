@@ -1,21 +1,29 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Begin : MonoBehaviour
 {
     [SerializeField] private GameObject timeObject;
+    [SerializeField] private GameObject dieObject;
+    [SerializeField] private GameObject backButton;
+    [SerializeField] private GameObject healthBarObject;
     [SerializeField] private float timeLeft;
+
+    private Movement movement;
+    private Slider slider;
     private TextMeshProUGUI time;
     private bool asStart;
-    // Start is called before the first frame update
+
     void Start()
     {
-        time = timeObject.GetComponent<TextMeshProUGUI>(); 
+        movement = FindObjectOfType<Movement>();
+        time = timeObject.GetComponent<TextMeshProUGUI>();
+        slider = healthBarObject.GetComponent<Slider>();
         time.text = "" + timeLeft;
         asStart = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(asStart && timeLeft > 0)
@@ -25,9 +33,19 @@ public class Begin : MonoBehaviour
         }
         if(timeLeft < 0)
         {
+            Dead();
+
             timeLeft = 0;
             time.text = "" + timeLeft;
         }
+    }
+
+    void Dead()
+    {
+        movement.Kill();
+        dieObject.SetActive(true);
+        backButton.SetActive(true);
+        slider.value = 0;
     }
 
     void OnTriggerEnter(Collider other)
@@ -36,5 +54,15 @@ public class Begin : MonoBehaviour
         {
             asStart = true;
         }
+    }
+
+    public void Pause()
+    {
+        asStart = false;
+    }
+
+    public void Resume()
+    {
+        asStart = true;
     }
 }

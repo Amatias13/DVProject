@@ -4,21 +4,21 @@ using UnityEngine;
 
 public class PlayerCam : MonoBehaviour
 {
-    [SerializeField] private float sensX;
-    [SerializeField] private float sensY;
     [SerializeField] private Transform playerBody;
+    private float sense;
     private float xRotation = 0f;
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        sense = 300.0f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        float mouseX = Input.GetAxis("Mouse X") * Time.deltaTime * sensX;
-        float mouseY = Input.GetAxis("Mouse Y") * Time.deltaTime * sensY;
+        float mouseX = Input.GetAxis("Mouse X") * Time.deltaTime * sense;
+        float mouseY = Input.GetAxis("Mouse Y") * Time.deltaTime * sense;
 
         xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);
@@ -26,5 +26,14 @@ public class PlayerCam : MonoBehaviour
         transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
 
         playerBody.Rotate(Vector3.up * mouseX);
+    }
+
+    public float GetSense()
+    {
+        return sense;
+    }
+    public void SetSense(float sense)
+    {
+        this.sense = sense*10;
     }
 }

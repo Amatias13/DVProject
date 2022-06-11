@@ -82,6 +82,8 @@ public class MenuController : MonoBehaviour
     {
         audio = GetComponent<AudioSource>();
         audio.Play();
+        volumeTextValue.text = "1.0";
+        volumeSlider.value = defaultVolume;
     }
 
 }

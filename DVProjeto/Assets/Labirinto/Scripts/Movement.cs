@@ -14,7 +14,12 @@ public class Movement : MonoBehaviour
     private float jump = 1.5f;
     private bool isGrounded;
     private bool isDead = false;
+    private PlayerCam cam;
 
+    void Start()
+    {
+        cam = FindObjectOfType<PlayerCam>();
+    }
 
     void Update()
     {
@@ -55,8 +60,12 @@ public class Movement : MonoBehaviour
                 animator.SetFloat("MoveSpeed", speed);
             }
         }
-        controller.Move(new Vector3(0,0,0));
-        animator.SetFloat("MoveSpeed", 0);
+        else
+        {
+            controller.Move(new Vector3(0, 0, 0));
+            animator.SetFloat("MoveSpeed", 0);
+            cam.StopCamera();
+        }
 
     }
 

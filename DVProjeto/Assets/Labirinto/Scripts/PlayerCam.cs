@@ -11,7 +11,7 @@ public class PlayerCam : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        sense = 300.0f;
+        sense = 1000.0f;
     }
 
     // Update is called once per frame
@@ -35,5 +35,10 @@ public class PlayerCam : MonoBehaviour
     public void SetSense(float sense)
     {
         this.sense = sense*10;
+    }
+
+    public void StopCamera()
+    {
+        sense = 0f;
     }
 }

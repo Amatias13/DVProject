@@ -7,12 +7,12 @@ public class PauseMenu : MonoBehaviour
     public bool gameIsPaused = false;
     [SerializeField] private GameObject pauseMenuUI;
     private Begin begin;
+    private AudioSource audioSource;
 
     void Start()
     {
         begin = FindObjectOfType<Begin>();
-
-        
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -28,7 +28,10 @@ public class PauseMenu : MonoBehaviour
                 Pause();
             }
         }
-
+        if (begin.isDead())
+        {
+            audioSource.Stop();
+        }
     }
     public void Resume()
     {
@@ -42,7 +45,7 @@ public class PauseMenu : MonoBehaviour
 
     public void Pause()
     {
-        Cursor.lockState = CursorLockMode.None;
+        Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = true;
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;

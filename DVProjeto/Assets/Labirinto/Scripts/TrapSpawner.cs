@@ -5,6 +5,7 @@ public class TrapSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject typeTrap1;
     [SerializeField] private GameObject typeTrap2;
+    [SerializeField] private int  numberOfTraps;
 
     private List<GameObject> traps = new List<GameObject>();
 
@@ -20,7 +21,7 @@ public class TrapSpawner : MonoBehaviour
     void SpawnTrap()
     {
 
-        for (int i = 0; i < 6; i++)
+        for (int i = 0; i < numberOfTraps; i++)
         {
             int typeOfTrap = Random.Range(0, 2);
 

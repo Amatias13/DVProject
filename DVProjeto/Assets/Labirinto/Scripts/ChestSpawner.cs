@@ -5,6 +5,8 @@ using UnityEngine;
 public class ChestSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject chest;
+    [SerializeField] private int numberOfChest;
+    [SerializeField] private float numberOfSpawnsPercentage;
 
     void Start()
     {
@@ -14,11 +16,11 @@ public class ChestSpawner : MonoBehaviour
 
     void SpawnChest()
     {
-        for (int i = 0; i < 8; i++)
+        for (int i = 0; i < numberOfChest; i++)
         {
             
             double probOfSpawn = Random.Range(0, 100);
-            if (probOfSpawn / 100 <= 0.5)
+            if (probOfSpawn / 100 <= numberOfSpawnsPercentage)
             {
                 Instantiate(chest, transform.GetChild(i).transform.position, transform.GetChild(i).transform.rotation);
             }

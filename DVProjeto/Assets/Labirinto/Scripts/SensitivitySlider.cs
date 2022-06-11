@@ -43,8 +43,6 @@ public class SensitivitySlider : MonoBehaviour
         sensitivitySlider.value = defaultSensitivity;
         sensitivityTextValue.text = defaultSensitivity.ToString("F2");
         playerCam.SetSense(defaultSensitivity);
-
-
     }
 
 

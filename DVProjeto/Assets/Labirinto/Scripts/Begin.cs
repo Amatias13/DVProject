@@ -9,6 +9,7 @@ public class Begin : MonoBehaviour
     [SerializeField] private GameObject backButton;
     [SerializeField] private GameObject healthBarObject;
     [SerializeField] private float timeLeft;
+    [SerializeField]  private string level;
 
     private Movement movement;
     private Slider slider;
@@ -16,6 +17,8 @@ public class Begin : MonoBehaviour
     private AudioSource audioSource;
     private AudioClip audioClip;
     private bool asStart;
+    private bool played;
+    private bool end;
 
     void Start()
     {
@@ -27,22 +30,40 @@ public class Begin : MonoBehaviour
 
         time.text = "" + timeLeft;
         asStart = false;
+        played = false;
+        end = false;
+
+        if (level.Equals("facil"))
+        {
+            healthBarObject.SetActive(false);
+            foreach(GameObject obj in GameObject.FindGameObjectsWithTag("TimeGroup"))
+            {
+                if (obj != null)
+                {
+                    obj.SetActive(false);
+                }
+            }
+        }
     }
 
     void Update()
     {
-        if(asStart && timeLeft > 0)
+        if (!end)
         {
-            timeLeft -= Time.deltaTime;
-            time.text = "" + Mathf.Floor(timeLeft * 100) / 100f; ;
-        }
-        if(slider.value == 0 || timeLeft < 0)
-        {
-            Dead();
+            if (asStart && timeLeft > 0)
+            {
+                timeLeft -= Time.deltaTime;
+                time.text = "" + Mathf.Floor(timeLeft * 100) / 100f; ;
+            }
+            if (slider.value == 0 || timeLeft < 0)
+            {
+                Dead();
 
-            timeLeft = 0;
-            time.text = "" + timeLeft;
+                timeLeft = 0;
+                time.text = "" + timeLeft;
+            }
         }
+
     }
 
     void Dead()
@@ -53,7 +74,12 @@ public class Begin : MonoBehaviour
         dieObject.SetActive(true);
         backButton.SetActive(true);
         slider.value = 0;
-        audioSource.PlayOneShot(audioClip);
+        if (!played)
+        {
+            played = true;
+            audioSource.PlayOneShot(audioClip);
+        }
+
     }
 
     void OnTriggerEnter(Collider other)
@@ -73,4 +99,21 @@ public class Begin : MonoBehaviour
     {
         asStart = true;
     }
+
+    public bool isDead()
+    {
+        if (slider.value == 0)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public void EndGame()
+    {
+        end = true;
+    }
+
+    
+
 }

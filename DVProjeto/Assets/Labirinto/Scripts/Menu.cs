@@ -55,4 +55,9 @@ public class Menu : MonoBehaviour
         volumeSlider2.value = defaultVolume2;
     }
 
+    public void StopMusic()
+    {
+        audio2.Stop();
+    }
+
 }

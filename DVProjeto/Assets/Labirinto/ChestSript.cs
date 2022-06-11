@@ -11,6 +11,8 @@ public class ChestSript : MonoBehaviour
     private float timeOfMessage;
     private bool open;
     private List<string> messages = new List<string>();
+    private AudioSource audioSource;
+    private AudioClip audioClip;
 
     // Update is called once per frame
     void Start()
@@ -22,6 +24,8 @@ public class ChestSript : MonoBehaviour
 
         messagesObject = GameObject.FindGameObjectWithTag("MessagesObject");
         animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
+        audioClip = audioSource.clip;
 
         time = 0f;
         timeOfMessage = 0f;
@@ -45,6 +49,7 @@ public class ChestSript : MonoBehaviour
                 animator.Play("Fantasy_Polygon_Chest_Animation");
                 time = 2.5f;
                 transform.GetChild(3).gameObject.SetActive(false);
+                audioSource.PlayOneShot(audioClip);
                 if (!open)
                 {
                     GetReward();

@@ -93,8 +93,8 @@ GameObject:
   - component: {fileID: 3972776999236046521}
   - component: {fileID: 3972776999237079289}
   - component: {fileID: 3972776999232584359}
-  - component: {fileID: 3972776998901983300}
   - component: {fileID: 8991959091141028303}
+  - component: {fileID: 5708537730517096528}
   m_Layer: 0
   m_Name: Cutter
   m_TagString: Untagged
@@ -178,18 +178,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.500412, y: 0.19999999, z: 1.4983063}
   m_Center: {x: 0.00034296513, y: 0.4, z: 0.007792115}
---- !u!114 &3972776998901983300
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3972776999239279289}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f250c5cf013e9a4aad4120e3e7c21ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!82 &8991959091141028303
 AudioSource:
   m_ObjectHideFlags: 0
@@ -286,6 +274,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5708537730517096528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3972776999239279289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51adc588914bbb14c975cca21ac1cad6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3972776999239279291
 GameObject:
   m_ObjectHideFlags: 0

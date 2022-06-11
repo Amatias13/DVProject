@@ -51,6 +51,8 @@ public class Menu : MonoBehaviour
     {
         audio2 = GetComponent<AudioSource>();
         audio2.Play();
+        volumeTextValue2.text = "1.0";
+        volumeSlider2.value = defaultVolume2;
     }
 
 }

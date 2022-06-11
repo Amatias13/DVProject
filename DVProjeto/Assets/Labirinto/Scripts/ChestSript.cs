@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class ChestSript : MonoBehaviour
 {
-    [SerializeField] private int amoutOfRewardMax;
-
     private GameObject messagesObject;
     private Animator animator;
     private GameObject message;
@@ -96,7 +94,7 @@ public class ChestSript : MonoBehaviour
         open = true;
 
         int typeOfReward = Random.Range(0, 3);
-        int amoutOfReward = Random.Range(50, amoutOfRewardMax);
+        int amoutOfReward = Random.Range(50, 100);
 
         message = messagesObject.transform.GetChild(typeOfReward).gameObject;
 

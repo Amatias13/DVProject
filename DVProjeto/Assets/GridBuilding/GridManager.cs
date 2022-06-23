@@ -1,32 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GridManager : MonoBehaviour
 {
 
-    [SerializeField] private int width, height;
     [SerializeField] private Tile tilePrefab;
-    
-    [SerializeField] private Transform camera;
-    [SerializeField] private GameObject circlePrefab;
-    private GameObject createdCircle;
-    [SerializeField] private GameObject squarePrefab;
-    private GameObject createdSquare;
-    private int circleNumber, squareNumber;
-
+    [SerializeField] private GameObject hospitalPrefab;
+    private GameObject createdHospital;
+    [SerializeField] private GameObject housePrefab;
+    private GameObject createdHouse;
     private GameObject choosen;
+
+    [SerializeField] private Transform camera;
 
     private Dictionary<Vector2, GameObject> placedList;
     private Dictionary<Vector2, Tile> tiles;
 
+    [SerializeField] private int width, height;
+    [SerializeField] private Text moneyText;
+    [SerializeField] private float money;
+    private int hospitalCost = 250;
+    private int houseCost = 100;
+
     private void Start()
     {
         GenerateGrid();
-        choosen = GameObject.FindWithTag("Teste");
+        choosen = GameObject.FindWithTag("House");
         placedList = new Dictionary<Vector2, GameObject>();
-        circleNumber = 5;
-        squareNumber = 5;
+        moneyText.text = money.ToString();
     }
 
     public void GenerateGrid()
@@ -50,47 +53,41 @@ public class GridManager : MonoBehaviour
         camera.transform.Rotate(0.0f, 180.0f, 0.0f, Space.World);
     }
 
-    /*public Tile getTileAtPosition(Vector2 pos)
-    {
-        if (tiles.TryGetValue(pos, out var tile))
-            return tile;
-        return null;
-    }*/
-
-
-    public void setClicked(Vector2 pos)
+    public void onMapClic(Vector2 pos)
     {
         if (!placedList.ContainsKey(pos))
         {
-            if (choosen.CompareTag("Teste"))
-                if (circleNumber > 0)
+            if (choosen.CompareTag("Hospital"))
+                if ((money - hospitalCost) >= 0)
                 {
                     Instantiate(choosen, pos, Quaternion.identity);
                     placedList[pos] = choosen;
-                    circleNumber--;
+                    money -= hospitalCost;
+                    moneyText.text = money.ToString();
                 }
-                else Debug.Log("não há mais");
+                else Debug.Log("Não há dinheiro");
 
-            if (choosen.CompareTag("Square"))
-                if (squareNumber > 0)
+            if (choosen.CompareTag("House"))
+                if ((money - houseCost) >= 0)
                 {
                     Instantiate(choosen, pos, Quaternion.identity);
                     placedList[pos] = choosen;
-                    squareNumber--;
+                    money -= houseCost;
+                    moneyText.text = money.ToString();
                 }
-                else Debug.Log("não há mais");
+                else Debug.Log("Não há dinheiro");
         }
-        else Debug.Log("Já ocupado");
+        else Debug.Log("Espaço já ocupado");
 
     }
 
-    public void setCircle()
+    public void setHospital()
     {
-        choosen = GameObject.FindWithTag("Teste");            
+        choosen = GameObject.FindWithTag("Hospital");            
     }
 
-    public void setSquare()
+    public void setHouse()
     {
-        choosen = GameObject.FindWithTag("Square");
+        choosen = GameObject.FindWithTag("House");
     }
 }

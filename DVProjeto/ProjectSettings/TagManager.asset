@@ -20,6 +20,9 @@ TagManager:
   - Undefined
   - Teste
   - Square
+  - House
+  - School
+  - Hospital
   layers:
   - Default
   - TransparentFX

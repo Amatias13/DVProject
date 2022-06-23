@@ -8,11 +8,14 @@ public class Tile : MonoBehaviour
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private GameObject highlight;
     private Vector2 tilePosition;
+    [SerializeField] private GameObject sphere;
+    private GridManager gridManager;
 
-    public void Init(bool isOffset, Vector2 pos)
+    public void Init(bool isOffset, Vector2 pos, GridManager gridManager)
     {
         spriteRenderer.color = isOffset ? offsetColor : baseColor;
         tilePosition = pos;
+        this.gridManager = gridManager;
     }
 
     void OnMouseEnter()
@@ -27,6 +30,7 @@ public class Tile : MonoBehaviour
 
     private void OnMouseDown()
     {
-        Debug.Log(tilePosition.ToString());
+        gridManager.setClicked(tilePosition);
     }
+
 }

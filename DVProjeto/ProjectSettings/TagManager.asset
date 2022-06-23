@@ -17,6 +17,9 @@ TagManager:
   - MessagesObject
   - EndMessage
   - TimeGroup
+  - Undefined
+  - Teste
+  - Square
   layers:
   - Default
   - TransparentFX

@@ -101,6 +101,7 @@ MonoBehaviour:
   offsetColor: {r: 0.32864895, g: 0.6226415, b: 0.26080453, a: 1}
   spriteRenderer: {fileID: 1060257991757886252}
   highlight: {fileID: 4157031025406834110}
+  sphere: {fileID: 6308961928091751012, guid: 647b69c0104592249b11a77fd2795ad3, type: 3}
 --- !u!61 &7409280294070324607
 BoxCollider2D:
   m_ObjectHideFlags: 0

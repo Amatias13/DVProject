@@ -46,7 +46,7 @@ public class GridManager : MonoBehaviour
                 tiles[new Vector2(x, y)] = spawnedTile;
             }
         }
-        camera.transform.position = new Vector3((float)width / 2 - 0.5f, (float)height / 2 - 0.5f, -15);
+        camera.transform.position = new Vector3((float)width / 2 - 0.5f, (float)height / 2 - 0.5f, -10);
         camera.transform.Rotate(0.0f, 180.0f, 0.0f, Space.World);
     }
 

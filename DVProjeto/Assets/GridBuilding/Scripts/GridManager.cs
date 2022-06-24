@@ -197,6 +197,8 @@ public class GridManager : MonoBehaviour
 
                         dataManager.UpdateMap(pos, super);
                     }
+                    else
+                        popUpMessage.transform.GetChild(0).GetComponent<PopUpScript>().setText("Não tem recursos");
                 }
 
                 if (temp.CompareTag("Plantation") && choosen.CompareTag(temp.tag))
@@ -214,6 +216,8 @@ public class GridManager : MonoBehaviour
                         placedList[pos].tag = "bigPlantation";
                         dataManager.UpdateMap(pos, placedList[pos]);
                     }
+                    else
+                        popUpMessage.transform.GetChild(0).GetComponent<PopUpScript>().setText("Não tem recursos");
                 }
 
                 if (temp.CompareTag("PowerTower") && choosen.CompareTag(temp.tag))
@@ -229,6 +233,8 @@ public class GridManager : MonoBehaviour
                         placedList[pos].tag = "bigPowerTower";
                         dataManager.UpdateMap(pos, placedList[pos]);
                     }
+                    else
+                        popUpMessage.transform.GetChild(0).GetComponent<PopUpScript>().setText("Não tem recursos");
                 }
 
                 if (temp.CompareTag("WaterTower") && choosen.CompareTag(temp.tag))
@@ -246,6 +252,8 @@ public class GridManager : MonoBehaviour
                         placedList[pos].tag = "bigWaterTower";
                         dataManager.UpdateMap(pos, placedList[pos]);
                     }
+                    else
+                        popUpMessage.transform.GetChild(0).GetComponent<PopUpScript>().setText("Não tem recursos");
                 }
 
                 if (temp.CompareTag("ResourceTower") && choosen.CompareTag(temp.tag))
@@ -267,6 +275,8 @@ public class GridManager : MonoBehaviour
                         placedList[pos].tag = "bigResourceTower";
                         dataManager.UpdateMap(pos, placedList[pos]);
                     }
+                    else
+                        popUpMessage.transform.GetChild(0).GetComponent<PopUpScript>().setText("Não tem recursos");
                 }
             }
         }

@@ -17,6 +17,7 @@ public class GridManager : MonoBehaviour
     [SerializeField] private float money;
     [SerializeField] private Button btnHouses, btnHospital;
     private Boolean isShowing;
+    private Boolean editMode;
 
     private GameObject choosen;
 
@@ -29,6 +30,7 @@ public class GridManager : MonoBehaviour
     private void Start()
     {
         isShowing = false;
+        editMode = false;
         GenerateGrid();
         choosen = smallHousePrefab;
         placedList = new Dictionary<Vector2, GameObject>();
@@ -58,42 +60,44 @@ public class GridManager : MonoBehaviour
 
     public void onMapClic(Vector2 pos)
     {
-        Debug.Log(pos);
-        if (!placedList.ContainsKey(pos))
+        if (editMode)
         {
-            if (choosen.CompareTag("Hospital"))
-                if ((money - hospitalCost) >= 0)
-                {
-                    GameObject obj = Instantiate(choosen, pos, Quaternion.identity);
-                    placedList[pos] = obj;
-                    money -= hospitalCost;
-                    moneyText.text = money.ToString();
-                }
-                else Debug.Log("Não há dinheiro");
-
-            if (choosen.CompareTag("SmallHouse"))
-                if ((money - houseCost) >= 0)
-                {
-                    GameObject obj = Instantiate(choosen, pos, Quaternion.identity);
-                    placedList[pos] = obj;
-                    money -= houseCost;
-                    moneyText.text = money.ToString();
-                }
-                else Debug.Log("Não há dinheiro");
-        }
-        else
-        {
-            GameObject temp = placedList[pos];
-            if (temp.CompareTag("SmallHouse"))
+            if (!placedList.ContainsKey(pos))
             {
-                if ((money - 300) >= 0)
+                if (choosen.CompareTag("Hospital"))
+                    if ((money - hospitalCost) >= 0)
+                    {
+                        GameObject obj = Instantiate(choosen, pos, Quaternion.identity);
+                        placedList[pos] = obj;
+                        money -= hospitalCost;
+                        moneyText.text = money.ToString();
+                    }
+                    else Debug.Log("Não há dinheiro");
+
+                if (choosen.CompareTag("SmallHouse"))
+                    if ((money - houseCost) >= 0)
+                    {
+                        GameObject obj = Instantiate(choosen, pos, Quaternion.identity);
+                        placedList[pos] = obj;
+                        money -= houseCost;
+                        moneyText.text = money.ToString();
+                    }
+                    else Debug.Log("Não há dinheiro");
+            }
+            else
+            {
+                GameObject temp = placedList[pos];
+                if (temp.CompareTag("SmallHouse"))
                 {
-                    Destroy(temp);
-                    GameObject super = bigHousePrefab;
-                    GameObject obj = Instantiate(super, pos, Quaternion.identity);
-                    placedList[pos] = obj;
-                    money -= 300;
-                    moneyText.text = money.ToString();
+                    if ((money - 300) >= 0)
+                    {
+                        Destroy(temp);
+                        GameObject super = bigHousePrefab;
+                        GameObject obj = Instantiate(super, pos, Quaternion.identity);
+                        placedList[pos] = obj;
+                        money -= 300;
+                        moneyText.text = money.ToString();
+                    }
                 }
             }
         }
@@ -122,12 +126,14 @@ public class GridManager : MonoBehaviour
             btnHospital.gameObject.SetActive(true);
             btnHouses.gameObject.SetActive(true);
             isShowing = true;
+            editMode = true;
         }
         else
         {
             btnHospital.gameObject.SetActive(false);
             btnHouses.gameObject.SetActive(false);
             isShowing = false;
+            editMode = false;
         }
     }
 }

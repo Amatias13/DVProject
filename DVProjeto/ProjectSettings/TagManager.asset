@@ -4,7 +4,6 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Begin
   - Exit
   - DieMessage
   - Back
@@ -23,6 +22,8 @@ TagManager:
   - House
   - School
   - Hospital
+  - SmallHouse
+  - BigHouse
   layers:
   - Default
   - TransparentFX

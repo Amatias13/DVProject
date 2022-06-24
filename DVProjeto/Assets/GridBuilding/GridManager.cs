@@ -13,7 +13,6 @@ public class GridManager : MonoBehaviour
     [SerializeField] private GameObject bigHousePrefab;
     [SerializeField] private Transform camera;
     [SerializeField] private int width, height;
-    [SerializeField] private Text moneyText;
     [SerializeField] private float money;
     [SerializeField] private Button btnHouses, btnHospital;
     private Boolean isShowing;
@@ -34,7 +33,6 @@ public class GridManager : MonoBehaviour
         GenerateGrid();
         choosen = smallHousePrefab;
         placedList = new Dictionary<Vector2, GameObject>();
-        moneyText.text = money.ToString();
     }
 
     public void GenerateGrid()
@@ -70,7 +68,7 @@ public class GridManager : MonoBehaviour
                         GameObject obj = Instantiate(choosen, pos, Quaternion.identity);
                         placedList[pos] = obj;
                         money -= hospitalCost;
-                        moneyText.text = money.ToString();
+                        //moneyText.text = money.ToString();
                     }
                     else Debug.Log("Não há dinheiro");
 
@@ -80,7 +78,7 @@ public class GridManager : MonoBehaviour
                         GameObject obj = Instantiate(choosen, pos, Quaternion.identity);
                         placedList[pos] = obj;
                         money -= houseCost;
-                        moneyText.text = money.ToString();
+                        //moneyText.text = money.ToString();
                     }
                     else Debug.Log("Não há dinheiro");
             }
@@ -96,7 +94,7 @@ public class GridManager : MonoBehaviour
                         GameObject obj = Instantiate(super, pos, Quaternion.identity);
                         placedList[pos] = obj;
                         money -= 300;
-                        moneyText.text = money.ToString();
+                        //moneyText.text = money.ToString();
                     }
                 }
             }

@@ -15203,6 +15203,8 @@ GameObject:
   - component: {fileID: 2007350283}
   - component: {fileID: 2007350282}
   - component: {fileID: 2007350284}
+  - component: {fileID: 2007350286}
+  - component: {fileID: 2007350285}
   m_Layer: 0
   m_Name: GridManager
   m_TagString: Untagged
@@ -15258,18 +15260,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a62eaf1961876804a9c9e351c98e21ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  diamondsText: {fileID: 884980985}
-  powerText: {fileID: 1374574520}
-  waterText: {fileID: 1791295828}
-  resourcesText: {fileID: 663496561}
-  foodText: {fileID: 1014222040}
   gameData:
     diamonds: 0
     power: 0
     water: 0
     resources: 0
     food: 0
+    people: 0
     placedList: []
+--- !u!114 &2007350285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2007350281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1fec5b8b80fa4444b8521d1b0af743b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  diamondsText: {fileID: 884980985}
+  powerText: {fileID: 1374574520}
+  waterText: {fileID: 1791295828}
+  resourcesText: {fileID: 663496561}
+  foodText: {fileID: 1014222040}
+  peopleText: {fileID: 645118338}
+--- !u!114 &2007350286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2007350281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ab3b6027ed84354082e1f4eddd616d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2008436888
 GameObject:
   m_ObjectHideFlags: 0

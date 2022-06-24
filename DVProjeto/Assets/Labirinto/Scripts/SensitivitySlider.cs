@@ -10,7 +10,7 @@ public class SensitivitySlider : MonoBehaviour
 
     [SerializeField] private TMP_Text sensitivityTextValue = null;
     [SerializeField] private Slider sensitivitySlider = null;
-    [SerializeField] private float defaultSensitivity = 100.0f;
+    private float defaultSensitivity = 100.0f;
     private PlayerCam playerCam;
 
     // Start is called before the first frame update
@@ -19,6 +19,8 @@ public class SensitivitySlider : MonoBehaviour
         float sensitivity = sensitivitySlider.value;
         playerCam.SetSense(sensitivity);
         sensitivityTextValue.text = sensitivity.ToString("F2");
+        defaultSensitivity = PlayerPrefs.GetFloat("sensitivity");
+        Debug.Log(defaultSensitivity);
     }
 
     public void SensitivityApply()

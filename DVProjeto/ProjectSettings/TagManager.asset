@@ -34,6 +34,7 @@ TagManager:
   - bigResourceTower
   - Begin
   - FadingText
+  - message
   layers:
   - Default
   - TransparentFX

@@ -14,6 +14,7 @@ public class GridManager : MonoBehaviour
     [SerializeField] private GameObject powerTowerPrefab;
     [SerializeField] private GameObject waterTowerPrefab;
     [SerializeField] private GameObject resourceTowerPrefab;
+    [SerializeField] private GameObject popUpMessage;
     [SerializeField] private Transform camera;
     [SerializeField] private int width, height;
     [SerializeField] private float money;
@@ -93,7 +94,9 @@ public class GridManager : MonoBehaviour
 
                         dataManager.AddToMap(pos, choosen);
                     }
-                    else Debug.Log("Não tem recursos suficientes");
+                    else
+                        popUpMessage.transform.GetChild(0).GetComponent<PopUpScript>().setText("Não tem recursos");
+                    
 
                 else if (choosen.CompareTag("Plantation"))
                     if ((dataManager.gameData.power - 5 >= 0) && (dataManager.gameData.water - 20 >= 0) && (dataManager.gameData.resources - 50 >= 0))
@@ -111,9 +114,11 @@ public class GridManager : MonoBehaviour
 
                         dataManager.AddToMap(pos, choosen);
                     }
-                    else Debug.Log("Não tem recursos suficientes");
+                    else
+                        popUpMessage.transform.GetChild(0).GetComponent<PopUpScript>().setText("Não tem recursos");
 
-                else if(choosen.CompareTag("PowerTower"))
+
+                else if (choosen.CompareTag("PowerTower"))
                     if ((dataManager.gameData.resources - 70 >= 0))
                     {
                         GameObject obj = Instantiate(choosen, pos, Quaternion.identity);
@@ -125,9 +130,11 @@ public class GridManager : MonoBehaviour
 
                         dataManager.AddToMap(pos, choosen);
                     }
-                    else Debug.Log("Não tem recursos suficientes");
+                    else
+                        popUpMessage.transform.GetChild(0).GetComponent<PopUpScript>().setText("Não tem recursos");
 
-                else if(choosen.CompareTag("WaterTower"))
+
+                else if (choosen.CompareTag("WaterTower"))
                     if ((dataManager.gameData.power - 10 >= 0) && (dataManager.gameData.resources - 50 >= 0))
                     {
                         GameObject obj = Instantiate(choosen, pos, Quaternion.identity);
@@ -141,9 +148,11 @@ public class GridManager : MonoBehaviour
 
                         dataManager.AddToMap(pos, choosen);
                     }
-                    else Debug.Log("Não tem recursos suficientes");
+                    else
+                        popUpMessage.transform.GetChild(0).GetComponent<PopUpScript>().setText("Não tem recursos");
 
-                else if(choosen.CompareTag("ResourceTower"))
+
+                else if (choosen.CompareTag("ResourceTower"))
                     if ((dataManager.gameData.power - 30 >= 0) && (dataManager.gameData.water - 10 >= 0) && (dataManager.gameData.food - 10 >= 0) && (dataManager.gameData.resources - 100 >= 0))
                     {
                         GameObject obj = Instantiate(choosen, pos, Quaternion.identity);
@@ -157,7 +166,9 @@ public class GridManager : MonoBehaviour
 
                         dataManager.AddToMap(pos, choosen);
                     }
-                    else Debug.Log("Não tem recursos suficientes");
+                    else
+                        popUpMessage.transform.GetChild(0).GetComponent<PopUpScript>().setText("Não tem recursos");
+
             }
             else
             {

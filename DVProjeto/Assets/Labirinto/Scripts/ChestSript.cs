@@ -1,6 +1,7 @@
 using TMPro;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ChestSript : MonoBehaviour
 {
@@ -96,6 +97,38 @@ public class ChestSript : MonoBehaviour
         int typeOfReward = Random.Range(0, 3);
         int amoutOfReward = Random.Range(50, 100);
 
+        var data = PlayerPrefs.GetString("GameData", "{}");
+        GameData gameData = JsonUtility.FromJson<GameData>(data);
+
+        if (typeOfReward == 0)
+        {
+            Debug.Log(gameData.water);
+            gameData.water += amoutOfReward;
+        }
+        else if (typeOfReward == 1)
+        {
+            Debug.Log(gameData.power);
+            gameData.power += amoutOfReward;
+        } 
+        else if (typeOfReward == 2)
+        {
+            Debug.Log(gameData.resources);
+            gameData.resources += amoutOfReward;
+        }
+        else if (typeOfReward == 3)
+        {
+            Debug.Log(gameData.food);
+            gameData.food += amoutOfReward;
+        }
+
+        if(SceneManager.GetActiveScene().buildIndex != 2)
+        {
+            GameObject.FindObjectOfType<Begin>().timeLeft += 10;
+        }
+
+        var json = JsonUtility.ToJson(gameData);
+        PlayerPrefs.SetString("GameData", json);
+
         message = messagesObject.transform.GetChild(typeOfReward).gameObject;
 
         message.SetActive(true);
@@ -105,6 +138,7 @@ public class ChestSript : MonoBehaviour
         timeOfMessage = 2f;
 
         textMessages.text = "YOU GET: " + amoutOfReward;
+
     }
 
 }

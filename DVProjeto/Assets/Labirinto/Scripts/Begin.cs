@@ -8,8 +8,8 @@ public class Begin : MonoBehaviour
     [SerializeField] private GameObject dieObject;
     [SerializeField] private GameObject backButton;
     [SerializeField] private GameObject healthBarObject;
-    [SerializeField] private float timeLeft;
-    [SerializeField]  private string level;
+    public float timeLeft;
+    [SerializeField] private string level;
 
     private Movement movement;
     private Slider slider;
@@ -112,6 +112,7 @@ public class Begin : MonoBehaviour
     public void EndGame()
     {
         end = true;
+        slider.value = 0;
     }
 
     

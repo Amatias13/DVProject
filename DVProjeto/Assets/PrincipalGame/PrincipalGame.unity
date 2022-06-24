@@ -12264,7 +12264,7 @@ MonoBehaviour:
   camera: {fileID: 2091141208}
   width: 10
   height: 10
-  money: 1000
+  money: 1000000
   btnHouses: {fileID: 1254287322}
   btnHospital: {fileID: 1106026497}
 --- !u!4 &2007350283

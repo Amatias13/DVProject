@@ -11,6 +11,10 @@ public class GridManager : MonoBehaviour
     [SerializeField] private GameObject hospitalPrefab;
     [SerializeField] private GameObject smallHousePrefab;
     [SerializeField] private GameObject bigHousePrefab;
+    [SerializeField] private GameObject plantationPrefab;
+    [SerializeField] private GameObject centralTowerPrefab;
+    [SerializeField] private GameObject waterTowerPrefab;
+    [SerializeField] private GameObject resourceTowerPrefab;
     [SerializeField] private Transform camera;
     [SerializeField] private int width, height;
     [SerializeField] private float money;
@@ -20,7 +24,7 @@ public class GridManager : MonoBehaviour
 
     private GameObject choosen;
     private DataManager dataManager;
-
+    private ResourcesTexts resourcesTexts;
 
     private Dictionary<Vector2, GameObject> placedList;
     private Dictionary<Vector2, Tile> tiles;
@@ -34,6 +38,7 @@ public class GridManager : MonoBehaviour
         choosen = smallHousePrefab;
         placedList = new Dictionary<Vector2, GameObject>();
         dataManager = gameObject.GetComponent<DataManager>();
+        resourcesTexts = gameObject.GetComponent<ResourcesTexts>();
         GenerateGrid();
     }
 
@@ -69,7 +74,7 @@ public class GridManager : MonoBehaviour
         }
     }
 
-    public void onMapClic(Vector2 pos)
+    public void onMapClick(Vector2 pos)
     {
         if (editMode)
         {
@@ -86,18 +91,93 @@ public class GridManager : MonoBehaviour
                     else Debug.Log("Não há dinheiro");
 
                 if (choosen.CompareTag("SmallHouse"))
-                    if ((money - houseCost) >= 0)
+                    if ((dataManager.gameData.power - 15 >= 0) && (dataManager.gameData.water - 10 >= 0) && (dataManager.gameData.resources - 100 >= 0))
                     {
                         GameObject obj = Instantiate(choosen, pos, Quaternion.identity);
                         placedList[pos] = obj;
-                        money -= houseCost;
+
+                        dataManager.gameData.power -= 15;
+                        dataManager.gameData.water -= 10;
+                        dataManager.gameData.resources -= 100;
+
+                        resourcesTexts.PowerText(dataManager.gameData.power);
+                        resourcesTexts.WaterText(dataManager.gameData.water);
+                        resourcesTexts.ResourcesText(dataManager.gameData.resources);
+
                         dataManager.AddToMap(pos, choosen);
                     }
-                    else Debug.Log("Não há dinheiro");
+                    else Debug.Log("Não tem recursos suficientes");
+
+                if (choosen.CompareTag("Plantation"))
+                    if ((dataManager.gameData.power - 5 >= 0) && (dataManager.gameData.water - 20 >= 0) && (dataManager.gameData.resources - 50 >= 0))
+                    {
+                        GameObject obj = Instantiate(choosen, pos, Quaternion.identity);
+                        placedList[pos] = obj;
+
+                        dataManager.gameData.power -= 5;
+                        dataManager.gameData.water -= 20;
+                        dataManager.gameData.resources -= 50;
+
+                        resourcesTexts.PowerText(dataManager.gameData.power);
+                        resourcesTexts.WaterText(dataManager.gameData.water);
+                        resourcesTexts.ResourcesText(dataManager.gameData.resources);
+
+                        dataManager.AddToMap(pos, choosen);
+                    }
+                    else Debug.Log("Não tem recursos suficientes");
+
+                if (choosen.CompareTag("PowerTower"))
+                    if ((dataManager.gameData.resources - 70 >= 0))
+                    {
+                        GameObject obj = Instantiate(choosen, pos, Quaternion.identity);
+                        placedList[pos] = obj;
+
+                        dataManager.gameData.resources -= 70;
+
+                        resourcesTexts.ResourcesText(dataManager.gameData.resources);
+
+                        dataManager.AddToMap(pos, choosen);
+                    }
+                    else Debug.Log("Não tem recursos suficientes");
+
+                if (choosen.CompareTag("WaterTower"))
+                    if ((dataManager.gameData.power - 10 >= 0) && (dataManager.gameData.resources - 50 >= 0))
+                    {
+                        GameObject obj = Instantiate(choosen, pos, Quaternion.identity);
+                        placedList[pos] = obj;
+
+                        dataManager.gameData.power -= 10;
+                        dataManager.gameData.resources -= 50;
+
+                        resourcesTexts.PowerText(dataManager.gameData.power);
+                        resourcesTexts.ResourcesText(dataManager.gameData.resources);
+
+                        dataManager.AddToMap(pos, choosen);
+                    }
+                    else Debug.Log("Não tem recursos suficientes");
+
+                if (choosen.CompareTag("ResourceTower"))
+                    if ((dataManager.gameData.power - 30 >= 0) && (dataManager.gameData.water - 10 >= 0) && (dataManager.gameData.food - 10 >= 0) && (dataManager.gameData.resources - 100 >= 0))
+                    {
+                        GameObject obj = Instantiate(choosen, pos, Quaternion.identity);
+                        placedList[pos] = obj;
+
+                        dataManager.gameData.resources -= 50;
+                        dataManager.gameData.water -= 10;
+
+                        resourcesTexts.ResourcesText(dataManager.gameData.resources);
+                        resourcesTexts.WaterText(dataManager.gameData.water);
+
+                        dataManager.AddToMap(pos, choosen);
+                    }
+                    else Debug.Log("Não tem recursos suficientes");
             }
             else
             {
+                //UPGRADES
+
                 GameObject temp = placedList[pos];
+
                 if (temp.CompareTag("SmallHouse"))
                 {
                     if ((money - 300) >= 0)
@@ -108,6 +188,76 @@ public class GridManager : MonoBehaviour
                         placedList[pos] = obj;
                         dataManager.UpdateMap(pos, super);
                         money -= 300;
+                    }
+                }
+
+                if (temp.CompareTag("Plantation"))
+                {
+                    if ((dataManager.gameData.power - 25 >= 0) && (dataManager.gameData.water - 20 >= 0) && (dataManager.gameData.diamonds - 10 >= 0))
+                    {
+                        dataManager.gameData.power -= 25;
+                        dataManager.gameData.water -= 20;
+                        dataManager.gameData.diamonds -= 10;
+
+                        resourcesTexts.PowerText(dataManager.gameData.power);
+                        resourcesTexts.WaterText(dataManager.gameData.water);
+                        resourcesTexts.DiamondsText(dataManager.gameData.diamonds);
+
+                        placedList[pos].tag = "bigPlantation";
+                        dataManager.UpdateMap(pos, placedList[pos]);
+                    }
+                }
+
+                if (temp.CompareTag("PowerTower"))
+                {
+                    if ((dataManager.gameData.resources - 130 >= 0) && (dataManager.gameData.diamonds - 10 >= 0))
+                    {
+                        dataManager.gameData.resources -= 130;
+                        dataManager.gameData.diamonds -= 10;
+
+                        resourcesTexts.ResourcesText(dataManager.gameData.resources);
+                        resourcesTexts.DiamondsText(dataManager.gameData.diamonds);
+
+                        placedList[pos].tag = "bigCentralPower";
+                        dataManager.UpdateMap(pos, placedList[pos]);
+                    }
+                }
+
+                if (temp.CompareTag("WaterTower"))
+                {
+                    if ((dataManager.gameData.power - 20 >= 0) && (dataManager.gameData.resources - 150 >= 0) && (dataManager.gameData.diamonds - 10 >= 0))
+                    {
+                        dataManager.gameData.power -= 20;
+                        dataManager.gameData.resources -= 150;
+                        dataManager.gameData.diamonds -= 10;
+
+                        resourcesTexts.PowerText(dataManager.gameData.power);
+                        resourcesTexts.ResourcesText(dataManager.gameData.resources);
+                        resourcesTexts.DiamondsText(dataManager.gameData.diamonds);
+
+                        placedList[pos].tag = "bigWaterPower";
+                        dataManager.UpdateMap(pos, placedList[pos]);
+                    }
+                }
+
+                if (temp.CompareTag("ResourceTower"))
+                {
+                    if ((dataManager.gameData.power - 55 >= 0) && (dataManager.gameData.water - 20 >= 0) && (dataManager.gameData.food - 20 >= 0) && (dataManager.gameData.resources - 350 >= 0) && (dataManager.gameData.diamonds - 10 >= 0))
+                    {
+                        dataManager.gameData.power -= 55;
+                        dataManager.gameData.water -= 20;
+                        dataManager.gameData.food -= 20;
+                        dataManager.gameData.resources -= 350;
+                        dataManager.gameData.diamonds -= 10;
+
+                        resourcesTexts.PowerText(dataManager.gameData.power);
+                        resourcesTexts.WaterText(dataManager.gameData.water);
+                        resourcesTexts.FoodText(dataManager.gameData.food);
+                        resourcesTexts.ResourcesText(dataManager.gameData.resources);
+                        resourcesTexts.DiamondsText(dataManager.gameData.diamonds);
+
+                        placedList[pos].tag = "bigResourceTower";
+                        dataManager.UpdateMap(pos, placedList[pos]);
                     }
                 }
             }
@@ -123,6 +273,26 @@ public class GridManager : MonoBehaviour
     public void setHouse()
     {
         choosen = smallHousePrefab;
+    }
+
+    public void setPlantation()
+    {
+        choosen = plantationPrefab;
+    }
+
+    public void setCentralTower()
+    {
+        choosen = centralTowerPrefab;
+    }
+
+    public void setWaterTower()
+    {
+        choosen = waterTowerPrefab;
+    }
+
+    public void setResourceTower()
+    {
+        choosen = resourceTowerPrefab;
     }
 
     public Dictionary<Vector2, GameObject> GetPlaced()

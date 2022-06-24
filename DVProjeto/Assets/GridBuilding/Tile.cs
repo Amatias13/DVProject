@@ -30,7 +30,7 @@ public class Tile : MonoBehaviour
 
     private void OnMouseDown()
     {
-        gridManager.onMapClic(tilePosition);
+        gridManager.onMapClick(tilePosition);
     }
 
 }

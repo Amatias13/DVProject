@@ -95,8 +95,8 @@ public class GridManager : MonoBehaviour
                         dataManager.AddToMap(pos, choosen);
                     }
                     else
-                        popUpMessage.transform.GetChild(0).GetComponent<PopUpScript>().setText("Não tem recursos");
-                    
+                        popUpMessage.transform.GetChild(0).GetComponent<PopUpScript>().setText("You don't have resources to create a new construction");
+
 
                 else if (choosen.CompareTag("Plantation"))
                     if ((dataManager.gameData.power - 5 >= 0) && (dataManager.gameData.water - 20 >= 0) && (dataManager.gameData.resources - 50 >= 0))
@@ -115,7 +115,7 @@ public class GridManager : MonoBehaviour
                         dataManager.AddToMap(pos, choosen);
                     }
                     else
-                        popUpMessage.transform.GetChild(0).GetComponent<PopUpScript>().setText("Não tem recursos");
+                        popUpMessage.transform.GetChild(0).GetComponent<PopUpScript>().setText("You don't have resources to create a new construction");
 
 
                 else if (choosen.CompareTag("PowerTower"))
@@ -131,7 +131,7 @@ public class GridManager : MonoBehaviour
                         dataManager.AddToMap(pos, choosen);
                     }
                     else
-                        popUpMessage.transform.GetChild(0).GetComponent<PopUpScript>().setText("Não tem recursos");
+                        popUpMessage.transform.GetChild(0).GetComponent<PopUpScript>().setText("You don't have resources to create a new construction");
 
 
                 else if (choosen.CompareTag("WaterTower"))
@@ -149,7 +149,7 @@ public class GridManager : MonoBehaviour
                         dataManager.AddToMap(pos, choosen);
                     }
                     else
-                        popUpMessage.transform.GetChild(0).GetComponent<PopUpScript>().setText("Não tem recursos");
+                        popUpMessage.transform.GetChild(0).GetComponent<PopUpScript>().setText("You don't have resources to create a new construction");
 
 
                 else if (choosen.CompareTag("ResourceTower"))
@@ -167,7 +167,7 @@ public class GridManager : MonoBehaviour
                         dataManager.AddToMap(pos, choosen);
                     }
                     else
-                        popUpMessage.transform.GetChild(0).GetComponent<PopUpScript>().setText("Não tem recursos");
+                        popUpMessage.transform.GetChild(0).GetComponent<PopUpScript>().setText("You don't have resources to create a new construction");
 
             }
             else
@@ -198,7 +198,7 @@ public class GridManager : MonoBehaviour
                         dataManager.UpdateMap(pos, super);
                     }
                     else
-                        popUpMessage.transform.GetChild(0).GetComponent<PopUpScript>().setText("Não tem recursos");
+                        popUpMessage.transform.GetChild(0).GetComponent<PopUpScript>().setText("You don't have resources to upgrade that construction");
                 }
 
                 if (temp.CompareTag("Plantation") && choosen.CompareTag(temp.tag))
@@ -217,7 +217,8 @@ public class GridManager : MonoBehaviour
                         dataManager.UpdateMap(pos, placedList[pos]);
                     }
                     else
-                        popUpMessage.transform.GetChild(0).GetComponent<PopUpScript>().setText("Não tem recursos");
+                        popUpMessage.transform.GetChild(0).GetComponent<PopUpScript>().setText("You don't have resources to upgrade that construction");
+
                 }
 
                 if (temp.CompareTag("PowerTower") && choosen.CompareTag(temp.tag))
@@ -234,7 +235,7 @@ public class GridManager : MonoBehaviour
                         dataManager.UpdateMap(pos, placedList[pos]);
                     }
                     else
-                        popUpMessage.transform.GetChild(0).GetComponent<PopUpScript>().setText("Não tem recursos");
+                        popUpMessage.transform.GetChild(0).GetComponent<PopUpScript>().setText("You don't have resources to upgrade that construction");
                 }
 
                 if (temp.CompareTag("WaterTower") && choosen.CompareTag(temp.tag))
@@ -253,7 +254,7 @@ public class GridManager : MonoBehaviour
                         dataManager.UpdateMap(pos, placedList[pos]);
                     }
                     else
-                        popUpMessage.transform.GetChild(0).GetComponent<PopUpScript>().setText("Não tem recursos");
+                        popUpMessage.transform.GetChild(0).GetComponent<PopUpScript>().setText("You don't have resources to upgrade that construction");
                 }
 
                 if (temp.CompareTag("ResourceTower") && choosen.CompareTag(temp.tag))
@@ -276,7 +277,7 @@ public class GridManager : MonoBehaviour
                         dataManager.UpdateMap(pos, placedList[pos]);
                     }
                     else
-                        popUpMessage.transform.GetChild(0).GetComponent<PopUpScript>().setText("Não tem recursos");
+                        popUpMessage.transform.GetChild(0).GetComponent<PopUpScript>().setText("You don't have resources to upgrade that construction");
                 }
             }
         }

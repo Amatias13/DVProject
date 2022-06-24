@@ -5,6 +5,7 @@ public class DataManager : MonoBehaviour
 {
     public GameData gameData;
     private ResourcesTexts resourcesTexts;
+    private bool over;
 
     void Awake()
     {
@@ -28,12 +29,16 @@ public class DataManager : MonoBehaviour
             gameData = JsonUtility.FromJson<GameData>(data);
         }
 
+        PlayerPrefs.SetInt("GamesStatus", 1);
+
         resourcesTexts.DiamondsText(gameData.diamonds);
         resourcesTexts.PowerText(gameData.power);
         resourcesTexts.WaterText(gameData.water);
         resourcesTexts.ResourcesText(gameData.resources);
         resourcesTexts.FoodText(gameData.food);
         resourcesTexts.PeopleText(gameData.people);
+
+        over = false;
     }
 
     public void AddToMap(Vector2 vector2, GameObject gameObject)
@@ -55,7 +60,15 @@ public class DataManager : MonoBehaviour
 
     private void OnDestroy()
     {
-        SaveScore();
+        if (over == false) 
+        { 
+            SaveScore(); 
+        }
+    }
+
+    public void GameOver()
+    {
+        over = true;
     }
 
 

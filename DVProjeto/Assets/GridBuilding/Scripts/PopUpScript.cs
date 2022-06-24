@@ -1,14 +1,12 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PopUpScript : MonoBehaviour
 {
 
     private float timeRemaining = 1;
+    private bool isRunning = true;
     [SerializeField] private GameObject popUp;
 
     void Update()
@@ -16,17 +14,42 @@ public class PopUpScript : MonoBehaviour
         if (timeRemaining > 0)
         {
             timeRemaining -= Time.deltaTime;
+
+
         }
-        else
+        if (timeRemaining < 0)
         {
-            popUp.SetActive(false);
+            timeRemaining = 0;
+            if (isRunning)
+            {
+                popUp.SetActive(false);
+            }
         }
+
+
     }
 
     public void setText(string text)
     {
-        GetComponent<TextMeshProUGUI>().text = text;
-        popUp.SetActive(true);
+        if (isRunning)
+        {
+            timeRemaining = 1;
+            popUp.SetActive(true);
+            GetComponent<TextMeshProUGUI>().text = text;
+        }
+
     }
-    
+
+    public void GameOver(string text)
+    {
+        isRunning = false;
+        popUp.SetActive(true);
+        GetComponent<TextMeshProUGUI>().text = text;
+        popUp.transform.GetChild(1).gameObject.SetActive(true);
+    }
+
+    public void Back()
+    {
+        SceneManager.LoadScene(1);
+    }
 }

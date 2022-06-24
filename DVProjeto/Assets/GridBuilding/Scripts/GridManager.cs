@@ -178,14 +178,24 @@ public class GridManager : MonoBehaviour
 
                 if (temp.CompareTag("SmallHouse") && choosen.CompareTag(temp.tag))
                 {
-                    if ((money - 300) >= 0)
+                    if ((dataManager.gameData.power - 20 >= 0) && (dataManager.gameData.water - 20 >= 0) && (dataManager.gameData.resources - 200 >= 0) && (dataManager.gameData.diamonds - 10 >= 0))
                     {
                         Destroy(temp);
                         GameObject super = bigHousePrefab;
                         GameObject obj = Instantiate(super, pos, Quaternion.identity);
                         placedList[pos] = obj;
+
+                        dataManager.gameData.power -= 20;
+                        dataManager.gameData.water -= 20;
+                        dataManager.gameData.resources -= 200;
+                        dataManager.gameData.diamonds -= 10;
+
+                        resourcesTexts.PowerText(dataManager.gameData.power);
+                        resourcesTexts.WaterText(dataManager.gameData.water);
+                        resourcesTexts.ResourcesText(dataManager.gameData.resources);
+                        resourcesTexts.DiamondsText(dataManager.gameData.diamonds);
+
                         dataManager.UpdateMap(pos, super);
-                        money -= 300;
                     }
                 }
 

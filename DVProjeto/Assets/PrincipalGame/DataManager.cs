@@ -25,17 +25,7 @@ public class DataManager : MonoBehaviour
         resourcesText.GetComponent<TextMeshProUGUI>().text = "" + gameData.resources;
         foodText.GetComponent<TextMeshProUGUI>().text = "" + gameData.food;
 
-        for (int x = 0; x < 10; x++)
-        {
-            for (int y = 0; y < 10; y++)
-            {
-                if (gameData.placedList[new Vector2(x, y)] != null)
-                {
-                    var objectGame = Instantiate(gameData.placedList[new Vector2(x, y)], new Vector3(x, y), Quaternion.identity);
-                }
-                
-            }
-        }
+        
     }
 
     public void SetMap(Dictionary<Vector2, GameObject> placedList)

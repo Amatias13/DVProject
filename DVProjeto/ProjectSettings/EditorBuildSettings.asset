@@ -14,4 +14,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/level1.unity
     guid: b28b13a32d0abb349bb1e3ab527f0f77
+  - enabled: 1
+    path: Assets/Labirinto/Scenes/LabirintoFacil.unity
+    guid: 5989d8c6f02214841aa83873446e56ac
+  - enabled: 1
+    path: Assets/Labirinto/Scenes/LabirintoMedio.unity
+    guid: ba519c7fbde709a47bab73f252b3a457
+  - enabled: 1
+    path: Assets/Labirinto/Scenes/LabirintoDificil.unity
+    guid: e0ebbe75d1f577b4cbb4942ff77a80f6
   m_configObjects: {}

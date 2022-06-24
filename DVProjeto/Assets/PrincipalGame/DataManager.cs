@@ -8,6 +8,7 @@ public class DataManager : MonoBehaviour
 
     void Awake()
     {
+        PlayerPrefs.DeleteAll();
         resourcesTexts = GetComponent<ResourcesTexts>();
 
         int status = PlayerPrefs.GetInt("GamesStatus", 0);

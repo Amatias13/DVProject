@@ -12,7 +12,7 @@ public class DayScript : MonoBehaviour
 
     void Start()
     {
-        time = 5;
+        time = 100000;
         numberOfSmallHouse = 0;
         numberOfBigHouse = 0;
 
@@ -52,7 +52,7 @@ public class DayScript : MonoBehaviour
             dataManager.gameData.people = (int)numberOf;
             resourcesTexts.PeopleText((int)numberOf);
 
-            time = 5;
+            time = 100000;
         }
     }
 }

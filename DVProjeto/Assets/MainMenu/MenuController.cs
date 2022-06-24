@@ -13,7 +13,7 @@ public class MenuController : MonoBehaviour
     [Header("Levels to Load")]
     [SerializeField] private TMP_Text volumeTextValue = null;
     [SerializeField] private Slider volumeSlider = null;
-    [SerializeField] private GameObject comfirmationPrompt = null;
+    [SerializeField] private GameObject confirmationPrompt = null;
     [SerializeField] private float defaultVolume = 1.0f;
 
     [Header("Levels to Load")]
@@ -71,11 +71,9 @@ public class MenuController : MonoBehaviour
 
     public IEnumerator ConfirmationBox()
     {
-        comfirmationPrompt.SetActive(true);
+        confirmationPrompt.SetActive(true);
         yield return new WaitForSeconds(2);
-        comfirmationPrompt.SetActive(false);
-
-
+        confirmationPrompt.SetActive(false);
     }
 
     void Start()

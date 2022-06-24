@@ -10,15 +10,15 @@ public class GameData
     public int water;
     public int resources;
     public int food;
-    public Dictionary<Vector2, GameObject> placedList;
+    public List<MapData> placedList;
 
-    public GameData(int diamonds, int power, int water, int resources, int food, Dictionary<Vector2, GameObject> placedList)
+    public GameData(int diamonds, int power, int water, int resources, int food, List<MapData> placedList)
     {
         this.diamonds = diamonds;
         this.power = power;
         this.water = water;
         this.resources = resources;
         this.food = food;
-        this.placedList = placedList;
+        this.placedList = new List<MapData>();
     }
 }

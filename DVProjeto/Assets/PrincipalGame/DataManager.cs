@@ -1,5 +1,4 @@
 using TMPro;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DataManager : MonoBehaviour
@@ -11,7 +10,7 @@ public class DataManager : MonoBehaviour
     [SerializeField] private GameObject foodText;
 
 
-    private GameData gameData;
+    public GameData gameData;
 
     void Awake()
     {
@@ -25,12 +24,13 @@ public class DataManager : MonoBehaviour
         resourcesText.GetComponent<TextMeshProUGUI>().text = "" + gameData.resources;
         foodText.GetComponent<TextMeshProUGUI>().text = "" + gameData.food;
 
-        
+        Debug.Log(gameData.placedList);
+        Debug.Log(gameData.food);
     }
 
-    public void SetMap(Dictionary<Vector2, GameObject> placedList)
+    public void AddToMap(Vector2 vector2, GameObject gameObject)
     {
-        gameData.placedList =  placedList;
+        gameData.placedList.Add(new MapData(vector2, gameObject));
     }
 
 
@@ -39,10 +39,12 @@ public class DataManager : MonoBehaviour
         SaveScore();
     }
 
+
     public void SaveScore()
     {
         var json = JsonUtility.ToJson(gameData);
         Debug.Log(json);
         PlayerPrefs.SetString("GameData", json);
+
     }
 }

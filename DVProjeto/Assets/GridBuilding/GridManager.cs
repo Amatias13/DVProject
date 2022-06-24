@@ -19,6 +19,7 @@ public class GridManager : MonoBehaviour
     private Boolean editMode;
 
     private GameObject choosen;
+    private DataManager dataManager;
 
 
     private Dictionary<Vector2, GameObject> placedList;
@@ -30,9 +31,10 @@ public class GridManager : MonoBehaviour
     {
         isShowing = false;
         editMode = false;
-        GenerateGrid();
         choosen = smallHousePrefab;
         placedList = new Dictionary<Vector2, GameObject>();
+        dataManager = gameObject.GetComponent<DataManager>();
+        GenerateGrid();
     }
 
     public void GenerateGrid()
@@ -54,6 +56,17 @@ public class GridManager : MonoBehaviour
         }
         camera.transform.position = new Vector3((float)width / 2 - 0.5f, (float)height / 2 - 0.5f, -10);
         camera.transform.Rotate(0.0f, 180.0f, 0.0f, Space.World);
+
+        List<MapData> list = dataManager.gameData.placedList;
+
+        for (int x = 0; x < list.Count; x++)
+        {
+            if (list[x] != null)
+            {
+                GameObject obj = Instantiate(list[x].gameObject, list[x].vector2, Quaternion.identity);
+                placedList[list[x].vector2] = obj;
+            }
+        }
     }
 
     public void onMapClic(Vector2 pos)
@@ -68,7 +81,7 @@ public class GridManager : MonoBehaviour
                         GameObject obj = Instantiate(choosen, pos, Quaternion.identity);
                         placedList[pos] = obj;
                         money -= hospitalCost;
-                        //moneyText.text = money.ToString();
+                        dataManager.AddToMap(pos, choosen);
                     }
                     else Debug.Log("Não há dinheiro");
 
@@ -78,7 +91,7 @@ public class GridManager : MonoBehaviour
                         GameObject obj = Instantiate(choosen, pos, Quaternion.identity);
                         placedList[pos] = obj;
                         money -= houseCost;
-                        //moneyText.text = money.ToString();
+                        dataManager.AddToMap(pos, choosen);
                     }
                     else Debug.Log("Não há dinheiro");
             }

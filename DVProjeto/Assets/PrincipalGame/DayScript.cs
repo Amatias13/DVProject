@@ -30,7 +30,7 @@ public class DayScript : MonoBehaviour
     void Start()
     {
         time = 10;
-        day = PlayerPrefs.GetInt("days", 0);
+        day = PlayerPrefs.GetInt("days", 1);
 
         numberOfSmallHouse = 0;
         numberOfBigHouse = 0;
@@ -125,12 +125,18 @@ public class DayScript : MonoBehaviour
                 if (dataManager.gameData.people < 0)
                 {
                     resourcesTexts.PeopleText(0);
+
                     PlayerPrefs.SetInt("GamesStatus", 0);
+                    PlayerPrefs.SetInt("days", 1);
+
                     popUpMessage.transform.GetChild(0).GetComponent<PopUpScript>().GameOver("Game Over!");
                     GameObject.FindObjectOfType<ClockUI>().StopTime();
                     dataManager.GameOver();
+
                     GameObject.FindGameObjectWithTag("BuildButton").SetActive(false);
                     GameObject.FindGameObjectWithTag("MiniGameButton").SetActive(false);
+                    GameObject.FindGameObjectWithTag("Objects").SetActive(false);
+                    
                 }
                 else
                 {

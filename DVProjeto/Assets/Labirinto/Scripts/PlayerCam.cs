@@ -12,7 +12,6 @@ public class PlayerCam : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         sense = PlayerPrefs.GetFloat("sensitivity") * 10;
-        Debug.Log(sense);
     }
 
     // Update is called once per frame

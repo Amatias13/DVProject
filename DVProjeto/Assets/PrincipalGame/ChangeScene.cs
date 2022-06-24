@@ -14,7 +14,7 @@ public class ChangeScene : MonoBehaviour
 
         if (sceneID == -1)
         {
-            int randomNumber = Random.Range(2, 4);
+            int randomNumber = Random.Range(2, 5);
             SceneManager.LoadScene(randomNumber);
         } else SceneManager.LoadScene(sceneID);
     }

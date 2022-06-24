@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,6 +15,8 @@ public class GridManager : MonoBehaviour
     [SerializeField] private int width, height;
     [SerializeField] private Text moneyText;
     [SerializeField] private float money;
+    [SerializeField] private Button btnHouses, btnHospital;
+    private Boolean isShowing;
 
     private GameObject choosen;
 
@@ -25,6 +28,7 @@ public class GridManager : MonoBehaviour
 
     private void Start()
     {
+        isShowing = false;
         GenerateGrid();
         choosen = smallHousePrefab;
         placedList = new Dictionary<Vector2, GameObject>();
@@ -109,5 +113,21 @@ public class GridManager : MonoBehaviour
     public Dictionary<Vector2, GameObject> GetPlaced()
     {
         return placedList;
+    }
+
+    public void toggleButtons()
+    {
+        if (!isShowing)
+        {
+            btnHospital.gameObject.SetActive(true);
+            btnHouses.gameObject.SetActive(true);
+            isShowing = true;
+        }
+        else
+        {
+            btnHospital.gameObject.SetActive(false);
+            btnHouses.gameObject.SetActive(false);
+            isShowing = false;
+        }
     }
 }

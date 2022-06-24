@@ -32,6 +32,8 @@ TagManager:
   - bigPowerTower
   - bigWaterTower
   - bigResourceTower
+  - Begin
+  - FadingText
   layers:
   - Default
   - TransparentFX

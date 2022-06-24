@@ -3129,7 +3129,7 @@ GameObject:
   - component: {fileID: 460066624}
   m_Layer: 5
   m_Name: Canvas
-  m_TagString: Untagged
+  m_TagString: Objects
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8838,7 +8838,7 @@ GameObject:
   - component: {fileID: 1026455600}
   m_Layer: 5
   m_Name: MiniGameButton
-  m_TagString: Untagged
+  m_TagString: MiniGameButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14184,7 +14184,7 @@ GameObject:
   - component: {fileID: 1722913081}
   m_Layer: 5
   m_Name: BuildButton
-  m_TagString: Untagged
+  m_TagString: BuildButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

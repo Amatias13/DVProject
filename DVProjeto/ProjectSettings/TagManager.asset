@@ -35,6 +35,9 @@ TagManager:
   - Begin
   - FadingText
   - message
+  - BuildButton
+  - MiniGameButton
+  - Objects
   layers:
   - Default
   - TransparentFX

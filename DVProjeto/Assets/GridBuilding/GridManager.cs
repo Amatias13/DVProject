@@ -106,8 +106,8 @@ public class GridManager : MonoBehaviour
                         GameObject super = bigHousePrefab;
                         GameObject obj = Instantiate(super, pos, Quaternion.identity);
                         placedList[pos] = obj;
+                        dataManager.UpdateMap(pos, super);
                         money -= 300;
-                        //moneyText.text = money.ToString();
                     }
                 }
             }

@@ -3,34 +3,43 @@ using UnityEngine;
 
 public class DataManager : MonoBehaviour
 {
-    [SerializeField] private GameObject diamondsText;
-    [SerializeField] private GameObject powerText;
-    [SerializeField] private GameObject waterText;
-    [SerializeField] private GameObject resourcesText;
-    [SerializeField] private GameObject foodText;
-
-
     public GameData gameData;
+    private ResourcesTexts resourcesTexts;
 
     void Awake()
     {
         var data = PlayerPrefs.GetString("GameData", "{}");
         gameData = JsonUtility.FromJson<GameData>(data);
 
+        if (gameData.people == 0)
+        {
+            gameData.people = 10;
+        }
 
-        diamondsText.GetComponent<TextMeshProUGUI>().text = "" + gameData.diamonds;
-        powerText.GetComponent<TextMeshProUGUI>().text = "" + gameData.power;
-        waterText.GetComponent<TextMeshProUGUI>().text = "" + gameData.water;
-        resourcesText.GetComponent<TextMeshProUGUI>().text = "" + gameData.resources;
-        foodText.GetComponent<TextMeshProUGUI>().text = "" + gameData.food;
+        resourcesTexts = GetComponent<ResourcesTexts>();
 
-        Debug.Log(gameData.placedList);
-        Debug.Log(gameData.food);
+        resourcesTexts.DiamondsText(gameData.diamonds);
+        resourcesTexts.PowerText(gameData.power);
+        resourcesTexts.WaterText(gameData.water);
+        resourcesTexts.ResourcesText(gameData.resources);
+        resourcesTexts.FoodText(gameData.food);
+        resourcesTexts.PeopleText(gameData.people);
     }
 
     public void AddToMap(Vector2 vector2, GameObject gameObject)
     {
         gameData.placedList.Add(new MapData(vector2, gameObject));
+    }
+
+    public void UpdateMap(Vector2 vector2, GameObject gameObject)
+    {
+        for (int x = 0; x < gameData.placedList.Count; x++)
+        {
+            if (gameData.placedList[x].vector2 == vector2)
+            {
+                gameData.placedList[x].gameObject = gameObject;
+            }
+        }
     }
 
 

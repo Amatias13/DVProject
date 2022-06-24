@@ -12,9 +12,6 @@ EditorBuildSettings:
     path: Assets/MainMenu/MainMenuGame.unity
     guid: 659df84a7b713ac49879519757b4a5bd
   - enabled: 1
-    path: Assets/level1.unity
-    guid: b28b13a32d0abb349bb1e3ab527f0f77
-  - enabled: 1
     path: Assets/Labirinto/Scenes/LabirintoFacil.unity
     guid: 5989d8c6f02214841aa83873446e56ac
   - enabled: 1

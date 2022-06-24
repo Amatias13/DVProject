@@ -5,9 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class ChangeScene : MonoBehaviour
 {
-    public void MoveToScene()
+    public void MoveToScene(int sceneID)
     {
-        int randomNumber = Random.Range(2, 4);
-        SceneManager.LoadScene(randomNumber);
+        if(sceneID == -1)
+        {
+            int randomNumber = Random.Range(2, 4);
+            SceneManager.LoadScene(randomNumber);
+        } else SceneManager.LoadScene(sceneID);
     }
 }

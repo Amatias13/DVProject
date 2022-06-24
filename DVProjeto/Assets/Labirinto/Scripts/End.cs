@@ -71,7 +71,8 @@ public class End : MonoBehaviour
 
             var json = JsonUtility.ToJson(gameData);
             PlayerPrefs.SetString("GameData", json);
-            Debug.Log(json);
+
+            PlayerPrefs.SetInt("days", PlayerPrefs.GetInt("days", 0) + 1);
 
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;

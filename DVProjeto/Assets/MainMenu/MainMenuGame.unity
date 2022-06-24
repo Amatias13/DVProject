@@ -3161,6 +3161,8 @@ GameObject:
   m_Component:
   - component: {fileID: 674118286}
   - component: {fileID: 674118287}
+  - component: {fileID: 674118289}
+  - component: {fileID: 674118288}
   m_Layer: 5
   m_Name: MainMenuContainer
   m_TagString: Untagged
@@ -3201,6 +3203,31 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 674118285}
   m_CullTransparentMesh: 1
+--- !u!114 &674118288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 674118285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dd2c2d6b172b534ba6f9256e5c4f43e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &674118289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 674118285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae4f6f764100f2e40aaf9c7df00a5ca3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  load: {fileID: 782854825}
 --- !u!1 &771913007
 GameObject:
   m_ObjectHideFlags: 0
@@ -5454,6 +5481,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 674118289}
+        m_TargetAssemblyTypeName: LoadGame, Assembly-CSharp
+        m_MethodName: Load
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1152671866
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7062,7 +7101,6 @@ MonoBehaviour:
   defaultVolume: 1
   newGameLevel: Level1
   levelToLoad: 
-  noSavedGameDialog: {fileID: 1040516925}
 --- !u!4 &1343077449
 Transform:
   m_ObjectHideFlags: 0
@@ -9541,6 +9579,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1343077448}
         m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
         m_MethodName: NewGameDialogYes
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 674118288}
+        m_TargetAssemblyTypeName: NewGame, Assembly-CSharp
+        m_MethodName: NewGameM
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

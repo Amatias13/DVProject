@@ -17,7 +17,7 @@ using UnityEngine.UI;
 
 public class ClockUI : MonoBehaviour {
 
-    private const float REAL_SECONDS_PER_INGAME_DAY = 60f;
+    private const float REAL_SECONDS_PER_INGAME_DAY = 30f;
 
     private Transform clockHourHandTransform;
     private Transform clockMinuteHandTransform;

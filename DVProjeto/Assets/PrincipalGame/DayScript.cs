@@ -1,10 +1,11 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class DayScript : MonoBehaviour
 {
     private float time;
+    private bool noPeople;
+    private int day;
 
     private int numberOfSmallHouse;
     private int numberOfBigHouse;
@@ -26,7 +27,9 @@ public class DayScript : MonoBehaviour
 
     void Start()
     {
-        time = 100000;
+        time = 30;
+        noPeople = false;
+        day = PlayerPrefs.GetInt("days", 0);
 
         numberOfSmallHouse = 0;
         numberOfBigHouse = 0;
@@ -50,30 +53,30 @@ public class DayScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        numberOfSmallHouse = GameObject.FindGameObjectsWithTag("SmallHouse").Length;
-        numberOfBigHouse = GameObject.FindGameObjectsWithTag("BigHouse").Length;
-
-        numberOfPlantation = GameObject.FindGameObjectsWithTag("Plantation").Length;
-        numberOfBigPlantation = GameObject.FindGameObjectsWithTag("bigPlantation").Length;
-
-        numberOfPowerTower = GameObject.FindGameObjectsWithTag("PowerTower").Length;
-        numberOfBigPowerTower = GameObject.FindGameObjectsWithTag("bigPowerTower").Length;
-
-        numberOfWaterTower = GameObject.FindGameObjectsWithTag("WaterTower").Length;
-        numberOfBigWaterTower = GameObject.FindGameObjectsWithTag("bigWaterTower").Length;
-
-        numberOfResourceTower = GameObject.FindGameObjectsWithTag("ResourceTower").Length;
-        numberOfBigResourceTower = GameObject.FindGameObjectsWithTag("bigResourceTower").Length;
-
         if (time >= 0)
         {
             time -= Time.deltaTime;
         }
         else
         {
-            int amoutOfPower = (numberOfSmallHouse * -15) + (numberOfBigHouse * -20) + (numberOfPlantation * -5) + (numberOfBigPlantation * -25) + (numberOfPowerTower * 50) + (numberOfBigPowerTower * 100) 
+            numberOfSmallHouse = GameObject.FindGameObjectsWithTag("SmallHouse").Length;
+            numberOfBigHouse = GameObject.FindGameObjectsWithTag("BigHouse").Length;
+
+            numberOfPlantation = GameObject.FindGameObjectsWithTag("Plantation").Length;
+            numberOfBigPlantation = GameObject.FindGameObjectsWithTag("bigPlantation").Length;
+
+            numberOfPowerTower = GameObject.FindGameObjectsWithTag("PowerTower").Length;
+            numberOfBigPowerTower = GameObject.FindGameObjectsWithTag("bigPowerTower").Length;
+
+            numberOfWaterTower = GameObject.FindGameObjectsWithTag("WaterTower").Length;
+            numberOfBigWaterTower = GameObject.FindGameObjectsWithTag("bigWaterTower").Length;
+
+            numberOfResourceTower = GameObject.FindGameObjectsWithTag("ResourceTower").Length;
+            numberOfBigResourceTower = GameObject.FindGameObjectsWithTag("bigResourceTower").Length;
+
+            int amoutOfPower = (numberOfSmallHouse * -15) + (numberOfBigHouse * -20) + (numberOfPlantation * -5) + (numberOfBigPlantation * -25) + (numberOfPowerTower * 50) + (numberOfBigPowerTower * 100)
                 + (numberOfWaterTower * -10) + (numberOfBigWaterTower * -20) + (numberOfResourceTower * -30) + (numberOfBigResourceTower * -55);
-            
+
             int amoutOfWater = (dataManager.gameData.people * -2) + (numberOfSmallHouse * -10) + (numberOfBigHouse * -20) + (numberOfPlantation * -20) + (numberOfBigPlantation * -40)
                 + (numberOfWaterTower * 40) + (numberOfBigWaterTower * 100) + (numberOfResourceTower * -10) + (numberOfBigResourceTower * -20);
 
@@ -81,7 +84,26 @@ public class DayScript : MonoBehaviour
 
             int amoutOfResources = (numberOfPlantation * 30) + (numberOfBigPlantation * 60) + (numberOfResourceTower * 150) + (numberOfBigResourceTower * 300);
 
-            int amoutOfPeople = dataManager.gameData.people + (numberOfSmallHouse * 2) + (numberOfBigHouse * 3);
+            List<int> amounts = new List<int>();
+            amounts.Add(amoutOfPower);
+            amounts.Add(amoutOfWater);
+            amounts.Add(amoutOfFood);
+            amounts.Add(amoutOfResources);
+
+            int negAmount = 0;
+
+            if (day > 0)
+            {
+                for (int i = 0; i < amounts.Count; i++)
+                {
+                    if (amounts[i] < 0)
+                    {
+                        negAmount += amounts[i];
+                    }
+                }
+            }
+
+            int amoutOfPeople = dataManager.gameData.people + (numberOfSmallHouse * 2) + (numberOfBigHouse * 3) - (int)(negAmount * 0.01 * day);
 
 
             dataManager.gameData.power = amoutOfPower;
@@ -99,7 +121,9 @@ public class DayScript : MonoBehaviour
             dataManager.gameData.people = amoutOfPeople;
             resourcesTexts.PeopleText(amoutOfPeople);
 
-            time = 100000;
+            time = 30;
+            day++;
+            PlayerPrefs.SetInt("days",day);
         }
     }
 }

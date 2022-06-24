@@ -6,9 +6,8 @@ public class NewGame : MonoBehaviour
 
     public void NewGameM()
     {
-        int status = PlayerPrefs.GetInt("GamesStatus", 0);
 
-        if (status == 0)
+        if (PlayerPrefs.GetInt("GamesStatus", 0) == 0)
         {
             SceneManager.LoadScene(5);
         }

@@ -19,26 +19,6 @@ public class MenuController : MonoBehaviour
     [Header("Levels to Load")]
     public string newGameLevel;
     public string levelToLoad;
-    [SerializeField] private GameObject noSavedGameDialog = null;
-
-    public void NewGameDialogYes()
-    {
-        SceneManager.LoadScene(5);
-
-    }
-    public void LoadGameDialogYes()
-    {
-        if (PlayerPrefs.HasKey("SavedLevel"))
-        {
-            levelToLoad = PlayerPrefs.GetString("SavedLevel");
-            SceneManager.LoadScene(levelToLoad);
-        }
-        else
-        {
-            noSavedGameDialog.SetActive(true);
-        }
-
-    }
 
     public void ExitButton()
     {

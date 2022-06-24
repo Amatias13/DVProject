@@ -4,7 +4,7 @@ using UnityEngine;
 public class LoadGame : MonoBehaviour
 {
     [SerializeField] private GameObject load;
-    public void Awake()
+    public void Start()
     {
         int status = PlayerPrefs.GetInt("GamesStatus", 0);
 

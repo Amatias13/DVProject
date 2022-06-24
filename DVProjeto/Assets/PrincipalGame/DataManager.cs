@@ -8,15 +8,23 @@ public class DataManager : MonoBehaviour
 
     void Awake()
     {
+        resourcesTexts = GetComponent<ResourcesTexts>();
+
+        int status = PlayerPrefs.GetInt("GamesStatus", 0);
+        // status == 1 ja começou status == 0 ainda nao 
+
         var data = PlayerPrefs.GetString("GameData", "{}");
         gameData = JsonUtility.FromJson<GameData>(data);
 
-        if (gameData.people == 0)
+        if (status == 0)
         {
             gameData.people = 10;
+            gameData.diamonds = 0;
+            gameData.power = 100;
+            gameData.water = 100;
+            gameData.resources = 500;
+            gameData.food = 100;
         }
-
-        resourcesTexts = GetComponent<ResourcesTexts>();
 
         resourcesTexts.DiamondsText(gameData.diamonds);
         resourcesTexts.PowerText(gameData.power);
@@ -52,8 +60,8 @@ public class DataManager : MonoBehaviour
     public void SaveScore()
     {
         var json = JsonUtility.ToJson(gameData);
-        Debug.Log(json);
         PlayerPrefs.SetString("GameData", json);
+        PlayerPrefs.SetInt("GamesStatus", 1);
 
     }
 }

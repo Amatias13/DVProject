@@ -23,7 +23,7 @@ public class MenuController : MonoBehaviour
 
     public void NewGameDialogYes()
     {
-        SceneManager.LoadScene(newGameLevel);
+        SceneManager.LoadScene(6);
 
     }
     public void LoadGameDialogYes()

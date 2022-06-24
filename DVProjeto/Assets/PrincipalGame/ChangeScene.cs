@@ -7,7 +7,7 @@ public class ChangeScene : MonoBehaviour
 {
     public void MoveToScene()
     {
-        int randomNumber = Random.Range(3, 5);
+        int randomNumber = Random.Range(2, 4);
         SceneManager.LoadScene(randomNumber);
     }
 }

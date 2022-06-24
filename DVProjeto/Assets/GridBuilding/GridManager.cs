@@ -8,28 +8,26 @@ public class GridManager : MonoBehaviour
 
     [SerializeField] private Tile tilePrefab;
     [SerializeField] private GameObject hospitalPrefab;
-    private GameObject createdHospital;
     [SerializeField] private GameObject housePrefab;
-    private GameObject createdHouse;
-    private GameObject choosen;
-
     [SerializeField] private Transform camera;
+    [SerializeField] private int width, height;
+    //[SerializeField] private Text moneyText;
+    [SerializeField] private float money;
 
+    private GameObject choosen;
     private Dictionary<Vector2, GameObject> placedList;
     private Dictionary<Vector2, Tile> tiles;
-
-    [SerializeField] private int width, height;
-    [SerializeField] private Text moneyText;
-    [SerializeField] private float money;
     private int hospitalCost = 250;
     private int houseCost = 100;
+    private DataManager dataManager;
 
     private void Start()
     {
         GenerateGrid();
-        choosen = GameObject.FindWithTag("House");
+        choosen = housePrefab; 
         placedList = new Dictionary<Vector2, GameObject>();
-        moneyText.text = money.ToString();
+        dataManager = gameObject.GetComponent<DataManager>();
+        //moneyText.text = money.ToString();
     }
 
     public void GenerateGrid()
@@ -55,6 +53,7 @@ public class GridManager : MonoBehaviour
 
     public void onMapClic(Vector2 pos)
     {
+        Debug.Log(pos);
         if (!placedList.ContainsKey(pos))
         {
             if (choosen.CompareTag("Hospital"))
@@ -62,8 +61,9 @@ public class GridManager : MonoBehaviour
                 {
                     Instantiate(choosen, pos, Quaternion.identity);
                     placedList[pos] = choosen;
+                    dataManager.SetMap(placedList);
                     money -= hospitalCost;
-                    moneyText.text = money.ToString();
+                    //moneyText.text = money.ToString();
                 }
                 else Debug.Log("Não há dinheiro");
 
@@ -72,8 +72,9 @@ public class GridManager : MonoBehaviour
                 {
                     Instantiate(choosen, pos, Quaternion.identity);
                     placedList[pos] = choosen;
+                    dataManager.SetMap(placedList);
                     money -= houseCost;
-                    moneyText.text = money.ToString();
+                    //moneyText.text = money.ToString();
                 }
                 else Debug.Log("Não há dinheiro");
         }
@@ -83,11 +84,16 @@ public class GridManager : MonoBehaviour
 
     public void setHospital()
     {
-        choosen = GameObject.FindWithTag("Hospital");            
+        choosen = hospitalPrefab;         
     }
 
     public void setHouse()
     {
-        choosen = GameObject.FindWithTag("House");
+        choosen = housePrefab;
+    }
+
+    public Dictionary<Vector2, GameObject> GetPlaced()
+    {
+        return placedList;
     }
 }

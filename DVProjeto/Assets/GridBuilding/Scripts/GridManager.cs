@@ -284,18 +284,6 @@ public class GridManager : MonoBehaviour
 
     public void toggleButtons()
     {
-        dataManager.gameData.food += 1000;
-        dataManager.gameData.diamonds += 1000;
-        dataManager.gameData.power += 1000;
-        dataManager.gameData.water += 1000;
-        dataManager.gameData.resources += 1000;
-
-        resourcesTexts.FoodText(dataManager.gameData.food);
-        resourcesTexts.DiamondsText(dataManager.gameData.diamonds);
-        resourcesTexts.PowerText(dataManager.gameData.power);
-        resourcesTexts.WaterText(dataManager.gameData.water);
-        resourcesTexts.ResourcesText(dataManager.gameData.resources);
-
         if (!isShowing)
         {
             btnPlantation.gameObject.SetActive(true);

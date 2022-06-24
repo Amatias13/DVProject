@@ -8,14 +8,10 @@ public class DataManager : MonoBehaviour
 
     void Awake()
     {
-        PlayerPrefs.DeleteAll();
         resourcesTexts = GetComponent<ResourcesTexts>();
 
         int status = PlayerPrefs.GetInt("GamesStatus", 0);
         // status == 1 ja começou status == 0 ainda nao 
-
-        var data = PlayerPrefs.GetString("GameData", "{}");
-        gameData = JsonUtility.FromJson<GameData>(data);
 
         if (status == 0)
         {
@@ -25,6 +21,11 @@ public class DataManager : MonoBehaviour
             gameData.water = 100;
             gameData.resources = 500;
             gameData.food = 100;
+        }
+        else
+        {
+            var data = PlayerPrefs.GetString("GameData", "{}");
+            gameData = JsonUtility.FromJson<GameData>(data);
         }
 
         resourcesTexts.DiamondsText(gameData.diamonds);

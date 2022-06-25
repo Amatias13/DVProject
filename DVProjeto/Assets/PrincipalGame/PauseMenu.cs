@@ -52,4 +52,11 @@ public class PauseMenu : MonoBehaviour
         gameIsPaused = true;
         begin.Pause();
     }
+
+    public void MainMenu()
+    {
+        gameIsPaused = false;
+        begin.Resume();
+        Time.timeScale = 1f;
+    }
 }

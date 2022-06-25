@@ -77,5 +77,6 @@ public class DataManager : MonoBehaviour
         var json = JsonUtility.ToJson(gameData);
         PlayerPrefs.SetString("GameData", json);
         PlayerPrefs.SetInt("GamesStatus", 1);
+        PlayerPrefs.SetInt("days", PlayerPrefs.GetInt("days"));
     }
 }

@@ -4695,6 +4695,7 @@ GameObject:
   - component: {fileID: 622608579}
   - component: {fileID: 622608578}
   - component: {fileID: 622608580}
+  - component: {fileID: 622608581}
   m_Layer: 0
   m_Name: MenuController
   m_TagString: Untagged
@@ -4831,6 +4832,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &622608581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 622608577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df16a90a6b83a1f4583cb453f206cecb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameIsPaused: 0
+  pauseMenuUI: {fileID: 1564949507}
 --- !u!1 &637496441
 GameObject:
   m_ObjectHideFlags: 0
@@ -6167,7 +6182,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 719451497}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2007350284}
+        m_TargetAssemblyTypeName: DataManager, Assembly-CSharp
+        m_MethodName: SaveScore
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &719451497
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10786,13 +10813,13 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: 
+      - m_Target: {fileID: 622608581}
+        m_TargetAssemblyTypeName: PauseMenuPrincipal, Assembly-CSharp
+        m_MethodName: Resume
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -11120,6 +11147,18 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 622608581}
+        m_TargetAssemblyTypeName: PauseMenuPrincipal, Assembly-CSharp
+        m_MethodName: MainMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -12816,7 +12855,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1564949508}
   - component: {fileID: 1564949511}
-  - component: {fileID: 1564949512}
   - component: {fileID: 1564949510}
   - component: {fileID: 1564949509}
   m_Layer: 5
@@ -12913,20 +12951,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!114 &1564949512
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1564949507}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0feb081cfdd80bf478806df35f558b1a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameIsPaused: 0
-  pauseMenuUI: {fileID: 1400939723}
 --- !u!1 &1568052668
 GameObject:
   m_ObjectHideFlags: 0
@@ -16478,6 +16502,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   popUpMessage: {fileID: 1973970762}
+  isPlaying: 0
 --- !u!1 &2008436888
 GameObject:
   m_ObjectHideFlags: 0
@@ -17561,6 +17586,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 144477911}
     m_Modifications:
+    - target: {fileID: 4897954976586368584, guid: 66e5f663285c3eb4ea1f7550522dc725, type: 3}
+      propertyPath: m_Text
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4897954977399062073, guid: 66e5f663285c3eb4ea1f7550522dc725, type: 3}
       propertyPath: m_Name
       value: Clock

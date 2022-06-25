@@ -1,16 +1,4 @@
-﻿/* 
-    ------------------- Code Monkey -------------------
-
-    Thank you for downloading this package
-    I hope you find it useful in your projects
-    If you have any questions let me know
-    Cheers!
-
-               unitycodemonkey.com
-    --------------------------------------------------
- */
-
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class ClockUI : MonoBehaviour
@@ -59,5 +47,10 @@ public class ClockUI : MonoBehaviour
     public void StopTime()
     {
         isPlaying = false;
+    }
+
+    public void ResumeTime()
+    {
+        isPlaying = true;
     }
 }

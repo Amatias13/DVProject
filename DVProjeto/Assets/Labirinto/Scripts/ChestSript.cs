@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class ChestSript : MonoBehaviour
 {
+    //Variaveis
     private GameObject messagesObject;
     private Animator animator;
     private GameObject message;
@@ -15,7 +16,7 @@ public class ChestSript : MonoBehaviour
     private AudioSource audioSource;
     private AudioClip audioClip;
 
-    // Update is called once per frame
+    //Define as variaveis no inicio
     void Start()
     {
         messages.Add("Water");
@@ -33,6 +34,7 @@ public class ChestSript : MonoBehaviour
         open = false;
     }
 
+    //Quando chega ao bau, apresenta a mensagem
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -41,6 +43,7 @@ public class ChestSript : MonoBehaviour
         }
     }
 
+    //Ao clicar no E perco do bau, devolve ao utilizador a recomepensa
     void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -61,11 +64,13 @@ public class ChestSript : MonoBehaviour
         }
     }
 
+    //Quando o utilizador sai de ao pé do bau, desaparece a mensagem
     void OnTriggerExit(Collider other)
     {
         transform.GetChild(3).gameObject.SetActive(false);
     }
 
+    //A cada segundo, corre o contador e no fim desaparece a mensagem
     void Update()
     {
         if (time != 0)
@@ -79,7 +84,6 @@ public class ChestSript : MonoBehaviour
 
         if (timeOfMessage != 0)
         {
-            
             timeOfMessage -= Time.deltaTime;
             if (timeOfMessage < 0)
             {
@@ -90,6 +94,7 @@ public class ChestSript : MonoBehaviour
 
     }
 
+    //Devolve ao utilizador a recompensa, gerada aleatoriamente
     void GetReward()
     {
         open = true;

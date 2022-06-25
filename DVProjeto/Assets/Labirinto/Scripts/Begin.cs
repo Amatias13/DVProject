@@ -4,22 +4,23 @@ using UnityEngine.UI;
 
 public class Begin : MonoBehaviour
 {
+    //Variaveis
     [SerializeField] private GameObject timeObject;
     [SerializeField] private GameObject dieObject;
     [SerializeField] private GameObject backButton;
     [SerializeField] private GameObject healthBarObject;
-    public float timeLeft;
     [SerializeField] private string level;
-
     private Movement movement;
     private Slider slider;
     private TextMeshProUGUI time;
     private AudioSource audioSource;
     private AudioClip audioClip;
+    public float timeLeft;
     private bool asStart;
     private bool played;
     private bool end;
 
+    //Ao iniciar, define as variaveis mediante do nível
     void Start()
     {
         movement = FindObjectOfType<Movement>();
@@ -46,6 +47,7 @@ public class Begin : MonoBehaviour
         }
     }
 
+    //O contador reduz e se chegar ao fim, morre
     void Update()
     {
         if (!end)
@@ -66,6 +68,7 @@ public class Begin : MonoBehaviour
 
     }
 
+    //Morre, e volta para o menu quando carregar no botão
     void Dead()
     {
         Cursor.lockState = CursorLockMode.None;
@@ -82,6 +85,7 @@ public class Begin : MonoBehaviour
 
     }
 
+    //Ao começar, ativa para o jogo começar
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -90,16 +94,19 @@ public class Begin : MonoBehaviour
         }
     }
 
+    //Ao pausar, o jogo para
     public void Pause()
     {
         asStart = false;
     }
 
+    //Ao retomar, o jogo retoma
     public void Resume()
     {
         asStart = true;
     }
 
+    //Verifica se a vida do utilizador é 0 ou não
     public bool isDead()
     {
         if (slider.value == 0)
@@ -109,11 +116,13 @@ public class Begin : MonoBehaviour
         return false;
     }
 
+    //Termina o jogo
     public void EndGame()
     {
         end = true;
     }
 
+    //Determina se o jogo acabou
     public bool GetEndGame()
     {
         return end ;

@@ -3,13 +3,14 @@ using UnityEngine.SceneManagement;
 
 public class End : MonoBehaviour
 {
+    //Variaveis
     [SerializeField] private GameObject endObject;
-
     private float time;
     private Movement movement;
     private Begin begin;
     private Menu menu;
 
+    //Ao iniciar, define os valores
     void Start()
     {
         time = 0;
@@ -18,7 +19,7 @@ public class End : MonoBehaviour
         menu = FindObjectOfType<Menu>();
     }
 
-    // Update is called once per frame
+    //Se o minijogo acabou, volta para o mapa
     void Update()
     {
         if (begin.GetEndGame())
@@ -35,6 +36,7 @@ public class End : MonoBehaviour
 
     }
 
+    //Quando o utilizador encontra a saída, o fim do labirinto, define os valores mediante do que ganhou durante o mini jogo e volta para o mapa
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))

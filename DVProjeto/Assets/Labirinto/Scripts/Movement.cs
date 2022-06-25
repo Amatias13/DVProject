@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
+    //Variaveis
     [SerializeField] private CharacterController controller;
     [SerializeField] private Animator animator;
     [SerializeField] private Transform groundCheck;
@@ -16,11 +17,13 @@ public class Movement : MonoBehaviour
     private bool isDead = false;
     private PlayerCam cam;
 
+    //Ao começar a camara fica defininida para o utilizador
     void Start()
     {
         cam = FindObjectOfType<PlayerCam>();
     }
 
+    //A cada passo que dá, se não estiver morto, pode-se mover a camara acompanha o jogador
     void Update()
     {
         if (!isDead)
@@ -69,6 +72,7 @@ public class Movement : MonoBehaviour
 
     }
 
+    //Mata o jogador
     public void Kill()
     {
         isDead = true;

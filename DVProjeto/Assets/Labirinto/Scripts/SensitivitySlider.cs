@@ -7,13 +7,16 @@ using TMPro;
 
 public class SensitivitySlider : MonoBehaviour
 {
-
+    
     [SerializeField] private TMP_Text sensitivityTextValue = null;
     [SerializeField] private Slider sensitivitySlider = null;
     private float defaultSensitivity = 100.0f;
     private PlayerCam playerCam;
 
-    // Start is called before the first frame update
+    /**
+     * Permite atualizar a sensibilidade do cursor
+     * e atualiza o valor mostrado ao utilizador
+     */
     public void SetSensitivity()
     {
         float sensitivity = sensitivitySlider.value;
@@ -22,11 +25,16 @@ public class SensitivitySlider : MonoBehaviour
         PlayerPrefs.SetFloat("sensitivity", sensitivity);
     }
 
+   
     public void SensitivityApply()
     {
         PlayerPrefs.SetFloat("sensitivity", sensitivitySlider.value);
     }
 
+    /**
+     * Permite colocar um valor de defeito na sesibilidade do cursor do utilizador 
+     * e atualiza o valor mostrado ao utilizador
+     */
     public void ResetButton(string MenuType)
     {
         if (MenuType == "Sensitivity")
@@ -38,6 +46,10 @@ public class SensitivitySlider : MonoBehaviour
         }
     }
 
+    /**
+     * Permite obter a sensibilidade do cursor que esta associada ao utilizador
+     * colocar esse valor de sensibilidade na camera que o utilizador visualiza e atalizar o valor que é mostrado ao utilizador
+     */
     void Start()
     {
         playerCam = FindObjectOfType<PlayerCam>();

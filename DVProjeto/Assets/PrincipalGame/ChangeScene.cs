@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class ChangeScene : MonoBehaviour
 {
+    //Variaveis
+
+    //Faz a transição da cena para a cena recebida por parametro
     public void MoveToScene(int sceneID)
     {
         var data = PlayerPrefs.GetString("GameData", "{}");

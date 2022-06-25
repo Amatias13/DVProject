@@ -3,10 +3,12 @@ using UnityEngine;
 
 public class DataManager : MonoBehaviour
 {
+    //Variaveis
     public GameData gameData;
     private ResourcesTexts resourcesTexts;
     private bool over;
 
+    //Ao iniciar, se for a primeira vez, começa com os recursos default e mete os textos. Se não for a primeira vez, dá load do progresso do utilizador
     void Awake()
     {
         resourcesTexts = GetComponent<ResourcesTexts>();
@@ -41,11 +43,13 @@ public class DataManager : MonoBehaviour
         over = false;
     }
 
+    //Adiciona à lista o objeto e a sua posição na grid
     public void AddToMap(Vector2 vector2, GameObject gameObject)
     {
         gameData.placedList.Add(new MapData(vector2, gameObject));
     }
 
+    //Atualiza a lista com o novo objecto numa determinada posição
     public void UpdateMap(Vector2 vector2, GameObject gameObject)
     {
         for (int x = 0; x < gameData.placedList.Count; x++)
@@ -57,7 +61,7 @@ public class DataManager : MonoBehaviour
         }
     }
 
-
+    //Grava a pontuação
     private void OnDestroy()
     {
         if (over == false) 
@@ -66,12 +70,13 @@ public class DataManager : MonoBehaviour
         }
     }
 
+    //Termina que o jogo acabou
     public void GameOver()
     {
         over = true;
     }
 
-
+    //Guarda a pontuação do jogador
     public void SaveScore()
     {
         var json = JsonUtility.ToJson(gameData);

@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class DayScript : MonoBehaviour
 {
+    //Variaveis
     private float time;
     private int day;
 
@@ -29,6 +30,7 @@ public class DayScript : MonoBehaviour
 
     public bool isPlaying;
 
+    //Ao começar, define os dias, o tempo e o numero de objetos do mapa
     void Start()
     {
         isPlaying = true;
@@ -54,8 +56,10 @@ public class DayScript : MonoBehaviour
         resourcesTexts = GetComponent<ResourcesTexts>();
     }
 
+    //A cada segundo, atualiza os recursos, fazendo contas mediante das construçõese do numero de pessoas. Lógica base do jogo
     void Update()
     {
+        //Se estiver a jogar e ainda houver tempo para jogar
         if (isPlaying)
         {
             if (time >= 0)
@@ -80,6 +84,8 @@ public class DayScript : MonoBehaviour
 
                     numberOfResourceTower = GameObject.FindGameObjectsWithTag("ResourceTower").Length;
                     numberOfBigResourceTower = GameObject.FindGameObjectsWithTag("bigResourceTower").Length;
+
+                    //Debita os valores a cada tempo que passa, mediante das construções
 
                     int amoutOfPower = dataManager.gameData.power + (numberOfSmallHouse * -15) + (numberOfBigHouse * -20) + (numberOfPlantation * -5) + (numberOfBigPlantation * -25) + (numberOfPowerTower * 50) + (numberOfBigPowerTower * 100)
                         + (numberOfWaterTower * -10) + (numberOfBigWaterTower * -20) + (numberOfResourceTower * -30) + (numberOfBigResourceTower * -55);
@@ -125,7 +131,7 @@ public class DayScript : MonoBehaviour
                     dataManager.gameData.food = amoutOfFood;
                     resourcesTexts.FoodText(amoutOfFood);
 
-
+                    //Se já não houver pessoas, termina o jogo
                     dataManager.gameData.people = amoutOfPeople;
                     if (dataManager.gameData.people < 0)
                     {

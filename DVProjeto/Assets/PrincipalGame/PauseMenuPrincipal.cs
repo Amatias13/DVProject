@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class PauseMenuPrincipal : MonoBehaviour
 {
+    //Variaveis
     public bool gameIsPaused;
     [SerializeField] private GameObject pauseMenuUI;
     private AudioSource audioSource;
     private DayScript dayScript;
     private ClockUI clockUi;
 
+    //Inicializa as variaveis
     void Start()
     {
         gameIsPaused = false;
@@ -18,6 +20,7 @@ public class PauseMenuPrincipal : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
+    //A cada segundo, se carregar no ESC, mete em pausa. Se estiver morto, para a música
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -33,6 +36,7 @@ public class PauseMenuPrincipal : MonoBehaviour
         }
     }
 
+    //Retoma o jogo, o tempo e o cursor volta a aparecer
     public void Resume()
     {
         dayScript.isPlaying = true;
@@ -42,6 +46,7 @@ public class PauseMenuPrincipal : MonoBehaviour
         gameIsPaused = false;
     }
 
+    //Para o jogo, o tempo e o cursor desaparece
     public void Pause()
     {
         dayScript.isPlaying = false;
@@ -51,6 +56,7 @@ public class PauseMenuPrincipal : MonoBehaviour
         gameIsPaused = true;
     }
 
+    //Ao ir para o menu, o jogo retoma
     public void MainMenu()
     {
         gameIsPaused = false;

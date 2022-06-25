@@ -4,17 +4,20 @@ using UnityEngine;
 
 public class PauseMenu : MonoBehaviour
 {
+    //Variaveis
     public bool gameIsPaused = false;
     [SerializeField] private GameObject pauseMenuUI;
     private Begin begin;
     private AudioSource audioSource;
 
+    //Inicializa as variaveis
     void Start()
     {
         begin = FindObjectOfType<Begin>();
         audioSource = GetComponent<AudioSource>();
     }
 
+    //A cada segundo, se carregar no ESC, mete em pausa. Se estiver morto, para a música
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -33,6 +36,8 @@ public class PauseMenu : MonoBehaviour
             audioSource.Stop();
         }
     }
+
+    //Retoma o jogo, o tempo e o cursor volta a aparecer
     public void Resume()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -43,6 +48,7 @@ public class PauseMenu : MonoBehaviour
         begin.Resume();
     }
 
+    //Para o jogo, o tempo e o cursor desaparece
     public void Pause()
     {
         Cursor.lockState = CursorLockMode.Confined;
@@ -53,6 +59,7 @@ public class PauseMenu : MonoBehaviour
         begin.Pause();
     }
 
+    //Ao ir para o menu, o jogo retoma
     public void MainMenu()
     {
         gameIsPaused = false;

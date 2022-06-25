@@ -19,8 +19,7 @@ public class SensitivitySlider : MonoBehaviour
         float sensitivity = sensitivitySlider.value;
         playerCam.SetSense(sensitivity);
         sensitivityTextValue.text = sensitivity.ToString("F2");
-        defaultSensitivity = PlayerPrefs.GetFloat("sensitivity");
-        Debug.Log(defaultSensitivity);
+        PlayerPrefs.SetFloat("sensitivity", sensitivity);
     }
 
     public void SensitivityApply()
@@ -42,9 +41,9 @@ public class SensitivitySlider : MonoBehaviour
     void Start()
     {
         playerCam = FindObjectOfType<PlayerCam>();
-        sensitivitySlider.value = defaultSensitivity;
-        sensitivityTextValue.text = defaultSensitivity.ToString("F2");
-        playerCam.SetSense(defaultSensitivity);
+        sensitivitySlider.value = PlayerPrefs.GetFloat("sensitivity", defaultSensitivity);
+        sensitivityTextValue.text = PlayerPrefs.GetFloat("sensitivity", defaultSensitivity).ToString("F2");
+        playerCam.SetSense(PlayerPrefs.GetFloat("sensitivity", defaultSensitivity));
     }
 
 

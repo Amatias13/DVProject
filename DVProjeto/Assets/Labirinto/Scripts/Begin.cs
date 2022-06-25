@@ -114,6 +114,9 @@ public class Begin : MonoBehaviour
         end = true;
     }
 
-    
+    public bool GetEndGame()
+    {
+        return end ;
+    }
 
 }

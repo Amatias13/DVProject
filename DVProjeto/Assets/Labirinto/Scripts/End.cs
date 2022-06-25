@@ -21,7 +21,7 @@ public class End : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (begin.isDead())
+        if (begin.GetEndGame())
         {
             if (time > 0)
             {

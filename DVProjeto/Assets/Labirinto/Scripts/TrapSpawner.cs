@@ -9,6 +9,10 @@ public class TrapSpawner : MonoBehaviour
 
     private List<GameObject> traps = new List<GameObject>();
 
+    /*
+     * Adiciona os 2 tipos de traps recebidos pelo inspetor do unity colocandos os numa lista 
+     * Chama o metodo SpawnTrap
+     */
     void Start()
     {
         traps.Add(typeTrap1);
@@ -17,7 +21,9 @@ public class TrapSpawner : MonoBehaviour
         SpawnTrap();
     }
 
-
+    /*
+     * inicializa o número de traps recebidos pelo inspetor do unity nas posições ja definidas
+     */
     void SpawnTrap()
     {
 

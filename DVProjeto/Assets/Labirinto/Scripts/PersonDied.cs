@@ -3,6 +3,11 @@ using UnityEngine;
 
 public class PersonDied : MonoBehaviour
 {
+    /*
+     * recebe a informação do jogo retirando uma pessoa pois esta morreu no mini-jogo 
+     * retira o estado do curso 
+     * apos 1 segundo e meio volta para o jogo principal
+     */
     public void PersonM()
     {
         var data = PlayerPrefs.GetString("GameData", "{}");

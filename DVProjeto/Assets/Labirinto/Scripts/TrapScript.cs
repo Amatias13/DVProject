@@ -9,6 +9,12 @@ public class TrapScript : MonoBehaviour
     private AudioSource audioSource;
     private AudioClip audioClip;
 
+    /*
+     * recebe o objeto com a tag HealthBar
+     * recebe o objeto Slider
+     * colocar o valor do slider
+     * recebe o objeto AudioSource
+     */
     void Start()
     {
         healthBarObject = GameObject.FindGameObjectWithTag("HealthBar");
@@ -19,6 +25,12 @@ public class TrapScript : MonoBehaviour
         audioClip = audioSource.clip;
     }
 
+    /*
+     * compare se o que entrou no trigger é um player 
+     * se sim verifica se o tempo se encontra a zero se sim coloca o a 1
+     * tira 10 ao value e ao slider
+     * e toca um audioClip
+     */
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -33,6 +45,9 @@ public class TrapScript : MonoBehaviour
         }
     }
 
+    /*
+     * atualiza o value com o valor do slider a cada frame 
+     */
     void Update()
     {
         value = slider.value;

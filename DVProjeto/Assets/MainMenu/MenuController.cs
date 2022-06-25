@@ -20,11 +20,17 @@ public class MenuController : MonoBehaviour
     public string newGameLevel;
     public string levelToLoad;
 
+    /*
+     *Permite sair da aplicação
+     */
     public void ExitButton()
     {
         Application.Quit();
     }
 
+    /*
+     *Permite atualizar o volume dos sons do jogo
+     */
     public void SetVolume()
     {
         float volume = volumeSlider.value;
@@ -32,12 +38,16 @@ public class MenuController : MonoBehaviour
         volumeTextValue.text = volume.ToString("F2");
     }
 
+    
     public void VolumeApply()
     {
         PlayerPrefs.SetFloat("masterVolume", AudioListener.volume);
         StartCoroutine(ConfirmationBox());
     }
 
+    /*
+     *Permite colocar o volume default
+     */
     public void ResetButton(string MenuType)
     {
         if(MenuType == "Audio")
@@ -49,13 +59,17 @@ public class MenuController : MonoBehaviour
         }
     }
 
+    
     public IEnumerator ConfirmationBox()
     {
-        //confirmationPrompt.SetActive(true);
+        
         yield return new WaitForSeconds(2);
-        //confirmationPrompt.SetActive(false);
+        
     }
 
+    /*
+     *Permite iniciar o volume dos sons do jogo com um valor default;
+     */
     void Start()
     {
         audio = GetComponent<AudioSource>();

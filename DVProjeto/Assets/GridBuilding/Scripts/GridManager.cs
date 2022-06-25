@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class GridManager : MonoBehaviour
 {
-
+    //Variaveis
     [SerializeField] private Tile tilePrefab;
     [SerializeField] private GameObject smallHousePrefab;
     [SerializeField] private GameObject bigHousePrefab;
@@ -29,6 +29,7 @@ public class GridManager : MonoBehaviour
     private Dictionary<Vector2, GameObject> placedList;
     private Dictionary<Vector2, Tile> tiles;
 
+    //Ao iniciar, gera o tabuleiro de jogo
     private void Start()
     {
         isShowing = false;
@@ -40,6 +41,7 @@ public class GridManager : MonoBehaviour
         GenerateGrid();
     }
 
+    //Este metodo gera o tabuleiro, de tamanho recebido por parametro, e mete as tiles em cada uma das posições. Guarda também numa lista para depois dar load
     public void GenerateGrid()
     {
 
@@ -72,12 +74,16 @@ public class GridManager : MonoBehaviour
         }
     }
 
+    //OnClick no mapa, recebe a posição da tile onde foi clicada e corre a ação associada
     public void onMapClick(Vector2 pos)
     {
+        //Se estiver no modo editar
         if (editMode)
         {
+            //Se a tile estiver vazia
             if (!placedList.ContainsKey(pos))
             {
+                //Se o utilizador quiser por uma casa pequena, verifica se tem recursos. Se tiver, mete e atualiza os valores
                 if (choosen.CompareTag("SmallHouse"))
                     if ((dataManager.gameData.power - 15 >= 0) && (dataManager.gameData.water - 10 >= 0) && (dataManager.gameData.resources - 100 >= 0))
                     {
@@ -97,7 +103,7 @@ public class GridManager : MonoBehaviour
                     else
                         popUpMessage.transform.GetChild(0).GetComponent<PopUpScript>().setText("You don't have resources to create a new construction");
 
-
+                //Se o utilizador quiser por uma plantação, verifica se tem recursos. Se tiver, mete e atualiza os valores
                 else if (choosen.CompareTag("Plantation"))
                     if ((dataManager.gameData.power - 5 >= 0) && (dataManager.gameData.water - 20 >= 0) && (dataManager.gameData.resources - 50 >= 0))
                     {
@@ -117,7 +123,7 @@ public class GridManager : MonoBehaviour
                     else
                         popUpMessage.transform.GetChild(0).GetComponent<PopUpScript>().setText("You don't have resources to create a new construction");
 
-
+                //Se o utilizador quiser por uma torre de energia, verifica se tem recursos. Se tiver, mete e atualiza os valores
                 else if (choosen.CompareTag("PowerTower"))
                     if ((dataManager.gameData.resources - 70 >= 0))
                     {
@@ -133,7 +139,7 @@ public class GridManager : MonoBehaviour
                     else
                         popUpMessage.transform.GetChild(0).GetComponent<PopUpScript>().setText("You don't have resources to create a new construction");
 
-
+                //Se o utilizador quiser por uma torre de agua, verifica se tem recursos. Se tiver, mete e atualiza os valores
                 else if (choosen.CompareTag("WaterTower"))
                     if ((dataManager.gameData.power - 10 >= 0) && (dataManager.gameData.resources - 50 >= 0))
                     {
@@ -152,6 +158,7 @@ public class GridManager : MonoBehaviour
                         popUpMessage.transform.GetChild(0).GetComponent<PopUpScript>().setText("You don't have resources to create a new construction");
 
 
+                //Se o utilizador quiser por uma torre de recursos, verifica se tem recursos. Se tiver, mete e atualiza os valores
                 else if (choosen.CompareTag("ResourceTower"))
                     if ((dataManager.gameData.power - 30 >= 0) && (dataManager.gameData.water - 10 >= 0) && (dataManager.gameData.food - 10 >= 0) && (dataManager.gameData.resources - 100 >= 0))
                     {
@@ -176,6 +183,7 @@ public class GridManager : MonoBehaviour
 
                 GameObject temp = placedList[pos];
 
+                //Se o utilizador quiser dar upgrade à casa, verifica se tem recursos e se tiver, faz a alteração
                 if (temp.CompareTag("SmallHouse") && choosen.CompareTag(temp.tag))
                 {
                     if ((dataManager.gameData.power - 20 >= 0) && (dataManager.gameData.water - 20 >= 0) && (dataManager.gameData.resources - 200 >= 0) && (dataManager.gameData.diamonds - 10 >= 0))
@@ -201,6 +209,7 @@ public class GridManager : MonoBehaviour
                         popUpMessage.transform.GetChild(0).GetComponent<PopUpScript>().setText("You don't have resources to upgrade that construction");
                 }
 
+                //Se o utilizador quiser dar upgrade à plantação, verifica se tem recursos e se tiver, faz a alteração
                 if (temp.CompareTag("Plantation") && choosen.CompareTag(temp.tag))
                 {
                     if ((dataManager.gameData.power - 25 >= 0) && (dataManager.gameData.water - 20 >= 0) && (dataManager.gameData.diamonds - 10 >= 0))
@@ -221,6 +230,7 @@ public class GridManager : MonoBehaviour
 
                 }
 
+                //Se o utilizador quiser dar upgrade à torre de energia, verifica se tem recursos e se tiver, faz a alteração
                 if (temp.CompareTag("PowerTower") && choosen.CompareTag(temp.tag))
                 {
                     if ((dataManager.gameData.resources - 130 >= 0) && (dataManager.gameData.diamonds - 10 >= 0))
@@ -238,6 +248,7 @@ public class GridManager : MonoBehaviour
                         popUpMessage.transform.GetChild(0).GetComponent<PopUpScript>().setText("You don't have resources to upgrade that construction");
                 }
 
+                //Se o utilizador quiser dar upgrade à torre de água, verifica se tem recursos e se tiver, faz a alteração
                 if (temp.CompareTag("WaterTower") && choosen.CompareTag(temp.tag))
                 {
                     if ((dataManager.gameData.power - 20 >= 0) && (dataManager.gameData.resources - 150 >= 0) && (dataManager.gameData.diamonds - 10 >= 0))
@@ -257,6 +268,7 @@ public class GridManager : MonoBehaviour
                         popUpMessage.transform.GetChild(0).GetComponent<PopUpScript>().setText("You don't have resources to upgrade that construction");
                 }
 
+                //Se o utilizador quiser dar upgrade à torre de recursos, verifica se tem recursos e se tiver, faz a alteração
                 if (temp.CompareTag("ResourceTower") && choosen.CompareTag(temp.tag))
                 {
                     if ((dataManager.gameData.power - 55 >= 0) && (dataManager.gameData.water - 20 >= 0) && (dataManager.gameData.food - 20 >= 0) && (dataManager.gameData.resources - 350 >= 0) && (dataManager.gameData.diamonds - 10 >= 0))
@@ -284,36 +296,43 @@ public class GridManager : MonoBehaviour
 
     }
 
+    //Define o tipo de item a colocar
     public void setHouse()
     {
         choosen = smallHousePrefab;
     }
 
+    //Define o tipo de item a colocar
     public void setPlantation()
     {
         choosen = plantationPrefab;
     }
 
+    //Define o tipo de item a colocar
     public void setPowerTower()
     {
         choosen = powerTowerPrefab;
     }
 
+    //Define o tipo de item a colocar
     public void setWaterTower()
     {
         choosen = waterTowerPrefab;
     }
 
+    //Define o tipo de item a colocar
     public void setResourceTower()
     {
         choosen = resourceTowerPrefab;
     }
 
+    //Devolve a lista
     public Dictionary<Vector2, GameObject> GetPlaced()
     {
         return placedList;
     }
 
+    //Ativa ou desativa o modo de editar e os seus botões
     public void toggleButtons()
     {
         if (!isShowing)

@@ -5,10 +5,12 @@ using UnityEngine.SceneManagement;
 public class PopUpScript : MonoBehaviour
 {
 
+    //Variaveis
     private float timeRemaining = 2;
     private bool isRunning = true;
     [SerializeField] private GameObject popUp;
 
+    //Contador, quando chegar ao fim esconde o popup 
     void Update()
     {
         if (timeRemaining > 0)
@@ -27,6 +29,7 @@ public class PopUpScript : MonoBehaviour
 
     }
 
+    //Define o texto e apresenta o popup
     public void setText(string text)
     {
         if (isRunning)
@@ -38,6 +41,7 @@ public class PopUpScript : MonoBehaviour
 
     }
 
+    //Apresenta o popup com botão
     public void GameOver(string text)
     {
         isRunning = false;
@@ -46,6 +50,7 @@ public class PopUpScript : MonoBehaviour
         popUp.transform.GetChild(1).gameObject.SetActive(true);
     }
 
+    //Onclick, carrega a cena do menu principal
     public void Back()
     {
         SceneManager.LoadScene(1);

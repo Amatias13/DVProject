@@ -112,7 +112,6 @@ public class Begin : MonoBehaviour
     public void EndGame()
     {
         end = true;
-        slider.value = 0;
     }
 
     

@@ -7223,10 +7223,10 @@ RectTransform:
   m_Father: {fileID: 1978388901}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -618.9888, y: -31.705246}
-  m_SizeDelta: {x: -1617.9775, y: -1096.5891}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -618.9888, y: -45}
+  m_SizeDelta: {x: 302.0225, y: -86.34}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &607804605
 MonoBehaviour:
@@ -9754,10 +9754,10 @@ RectTransform:
   m_Father: {fileID: 1978388901}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -618.9888, y: -345.70526}
-  m_SizeDelta: {x: -1617.9775, y: -1108.5891}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -618.9888, y: -365}
+  m_SizeDelta: {x: 302.0225, y: -73.5046}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &749188577
 MonoBehaviour:
@@ -14477,10 +14477,10 @@ RectTransform:
   m_Father: {fileID: 1978388901}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -603.49, y: 117.294785}
-  m_SizeDelta: {x: -1586.98, y: -1074.5884}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -603.49, y: 115}
+  m_SizeDelta: {x: 333.02, y: 67.7123}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1110281259
 MonoBehaviour:
@@ -16311,10 +16311,10 @@ RectTransform:
   m_Father: {fileID: 1978388901}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -555.3779, y: -191.20525}
-  m_SizeDelta: {x: -1490.7559, y: -1097.5891}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -555.3779, y: -205}
+  m_SizeDelta: {x: 429.2441, y: -78.5098}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1301319334
 MonoBehaviour:

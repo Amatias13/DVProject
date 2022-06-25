@@ -29,8 +29,9 @@ public class DayScript : MonoBehaviour
 
     void Start()
     {
-        time = 10;
+        time = 30;
         day = PlayerPrefs.GetInt("days", 1);
+        Debug.Log(day);
 
         numberOfSmallHouse = 0;
         numberOfBigHouse = 0;
@@ -141,7 +142,7 @@ public class DayScript : MonoBehaviour
                 else
                 {
                     resourcesTexts.PeopleText(amoutOfPeople);
-                    time = 10;
+                    time = 30;
                     day++;
                     PlayerPrefs.SetInt("days", day);
                 }

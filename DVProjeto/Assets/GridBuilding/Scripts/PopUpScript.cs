@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class PopUpScript : MonoBehaviour
 {
 
-    private float timeRemaining = 1;
+    private float timeRemaining = 2;
     private bool isRunning = true;
     [SerializeField] private GameObject popUp;
 
@@ -14,8 +14,6 @@ public class PopUpScript : MonoBehaviour
         if (timeRemaining > 0)
         {
             timeRemaining -= Time.deltaTime;
-
-
         }
         if (timeRemaining < 0)
         {
@@ -33,7 +31,7 @@ public class PopUpScript : MonoBehaviour
     {
         if (isRunning)
         {
-            timeRemaining = 1;
+            timeRemaining = 2;
             popUp.SetActive(true);
             GetComponent<TextMeshProUGUI>().text = text;
         }
